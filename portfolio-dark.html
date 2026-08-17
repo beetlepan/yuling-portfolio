@@ -334,6 +334,10 @@ svg{ display:block; max-width:100%; height:auto; }
   margin-top:14px; color:var(--ink);
 }
 .about-body p{ font-size:16px; color:var(--ink-soft); max-width:56ch; margin-bottom:18px; text-align:justify; }
+.hl{ font-weight:700; color:var(--ochre-bright); }
+.about-body .hl{ color:var(--ochre); }
+.sheet--light .hl{ color:var(--ochre); }
+.footer--light .hl{ color:var(--ochre); }
 .about-body p:last-child{ margin-bottom:0; }
 
 .legend-box{
@@ -394,14 +398,14 @@ svg{ display:block; max-width:100%; height:auto; }
 .sheet--dark .sheet-desc{ color:rgba(244,239,223,0.8); }
 .sheet--dark .titleblock{ border-color:var(--line-on-navy); }
 .sheet--dark .titleblock .k{ color:rgba(244,239,223,0.5); }
-.sheet--dark .tag-chip{ border-color:var(--line-on-navy); color:rgba(244,239,223,0.85); }
+.sheet--dark .tag-chip{ background:var(--navy); border-color:var(--cyan); color:var(--paper-warm); font-weight:700; }
 .sheet--dark .sheet-code{ color:var(--cyan); }
 
 .sheet--light{ color:var(--ink); }
 .sheet--light .sheet-desc{ color:var(--ink-soft); }
 .sheet--light .titleblock{ border-color:var(--line-on-paper); }
 .sheet--light .titleblock .k{ color:var(--ink-soft); opacity:0.7; }
-.sheet--light .tag-chip{ border-color:var(--line-on-paper); color:var(--ink); }
+.sheet--light .tag-chip{ background:var(--navy); border-color:var(--navy); color:var(--paper-warm); font-weight:700; }
 .sheet--light .sheet-code{ color:var(--navy); }
 
 .sheet-code{
@@ -654,8 +658,8 @@ svg{ display:block; max-width:100%; height:auto; }
         <h2>研究方法，是我畫圖的鉛筆。</h2>
       </div>
       <div class="about-body">
-      <p>從使用者訪談與行為觀察出發，釐清系統裡每一個角色實際的動線與痛點；再透過服務藍圖與顧客旅程地圖，把散落的洞察收斂成可以被開發、被驗收的規格；最後用前後數據追蹤，檢驗這些改動是否真的讓使用體驗變得更好一點。這是我在台灣設計研究院三年間，持續打磨的一套工作方法，也是這份作品集裡五個案例共同的底稿。</p>
-      <p>碩士畢業於國立臺北商業大學創意設計與經營研究所，大學就讀銘傳大學資訊傳播工程學系。近幾年研究落在二手市場經濟、循環經濟政策與公共服務設計，並將這個視角延伸到兩篇國際學術發表。</p>
+      <p>從<span class="hl">使用者訪談</span>與<span class="hl">行為觀察</span>出發，釐清系統裡每一個角色實際的動線與痛點；再透過<span class="hl">服務藍圖</span>與<span class="hl">顧客旅程地圖</span>，把散落的洞察收斂成可以被開發、被驗收的規格；最後用<span class="hl">前後數據追蹤</span>，檢驗這些改動是否真的讓使用體驗變得更好一點。這是我在台灣設計研究院三年間，持續打磨的一套工作方法，也是這份作品集裡五個案例共同的底稿。</p>
+      <p>碩士畢業於國立臺北商業大學創意設計與經營研究所，大學就讀銘傳大學資訊傳播工程學系。近幾年研究落在<span class="hl">二手市場經濟</span>、<span class="hl">循環經濟政策</span>與<span class="hl">公共服務設計</span>，並將這個視角延伸到<span class="hl">兩篇國際學術發表</span>。</p>
       </div>
     </div>
     <div class="reveal">
@@ -695,7 +699,7 @@ svg{ display:block; max-width:100%; height:auto; }
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. EDEN—01 · 2026</span>
         <h3>伊甸基金會<br>計畫徵件系統</h3>
-        <p class="sheet-desc">伊甸社會福利基金會的計畫申請審核，長期仰賴人工往返與紙本表單，資訊分散、進度難以追蹤。我以第三方統籌角色，協調系統開發商與基金會窗口，把會議紀錄與現場訪談轉譯成兩份徵件流程泳道圖，並主導三次介面迭代——統一登入邏輯、整併預算欄位、為不同補助類型新增客製欄位。系統以 Ragic 為底層架構、Figma 為介面雛型，預計 2026 年 8 月正式上線。</p>
+        <p class="sheet-desc">伊甸社會福利基金會的計畫申請審核，長期仰賴人工往返與紙本表單，資訊分散、進度難以追蹤。我以<span class="hl">第三方統籌角色</span>，協調系統開發商與基金會窗口，把會議紀錄與現場訪談轉譯成<span class="hl">兩份徵件流程泳道圖</span>，並主導<span class="hl">三次介面迭代</span>——統一登入邏輯、整併預算欄位、為不同補助類型新增客製欄位。系統以 <span class="hl">Ragic</span> 為底層架構、<span class="hl">Figma</span> 為介面雛型，預計 <span class="hl">2026 年 8 月正式上線</span>。</p>
         <div class="tag-row">
           <span class="tag-chip">流程泳道圖</span>
           <span class="tag-chip">Ragic 系統</span>
@@ -730,7 +734,7 @@ svg{ display:block; max-width:100%; height:auto; }
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. DASHUIGOU—02 · 2024</span>
         <h3>大水溝二手屋<br>場域改造</h3>
-        <p class="sheet-desc">萬華大水溝二手屋，是我於台灣設計研究院推動循環經濟示範計畫中，數據最完整的一個場域案例。我主導空間動線與陳列邏輯的重新設計，並產出一份可複製到其他二手服務空間的設計指引文件。改造後三個月的追蹤數據顯示：顧客滿意度達 95%，新客佔比提升至 62%，月均到店人次由 900 人成長到 1,350 人。</p>
+        <p class="sheet-desc">萬華大水溝二手屋，是我於台灣設計研究院推動循環經濟示範計畫中，數據最完整的一個場域案例。我主導<span class="hl">空間動線與陳列邏輯的重新設計</span>，並產出一份可複製到其他二手服務空間的<span class="hl">設計指引文件</span>。改造後三個月的追蹤數據顯示：<span class="hl">顧客滿意度達 95%</span>，<span class="hl">新客佔比提升至 62%</span>，<span class="hl">月均到店人次由 900 人成長到 1,350 人</span>。</p>
         <div class="tag-row">
           <span class="tag-chip">空間動線設計</span>
           <span class="tag-chip">顧客旅程地圖</span>
@@ -800,7 +804,7 @@ svg{ display:block; max-width:100%; height:auto; }
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. TZUCHI—03 · 2024–2026</span>
         <h3>同一個品牌，<br>兩種挑戰</h3>
-        <p class="sheet-desc">同一個慈濟品牌，北部的中山八德惜福屋與南部的鳳山工坊，面對截然不同的挑戰——前者需要優化既有人流動線，後者要從零建立服務模式。我分別為兩個據點設計對應的服務策略，北部據點導入人流追蹤機制驗證動線改善成效，上線一週內獲得超過 20 則媒體報導，觸及人次突破 1,000。</p>
+        <p class="sheet-desc">同一個慈濟品牌，北部的中山八德惜福屋與南部的鳳山工坊，面對截然不同的挑戰——前者需要優化既有人流動線，後者要從零建立服務模式。我分別為兩個據點設計對應的服務策略，北部據點導入<span class="hl">人流追蹤機制</span>驗證動線改善成效，上線一週內獲得<span class="hl">超過 20 則媒體報導</span>，<span class="hl">觸及人次突破 1,000</span>。</p>
         <div class="tag-row">
           <span class="tag-chip">雙據點策略</span>
           <span class="tag-chip">人流追蹤</span>
@@ -861,14 +865,14 @@ svg{ display:block; max-width:100%; height:auto; }
         <span class="live-badge"><span class="pulse"></span>LIVE · 上線營運中</span>
         <span class="sheet-code">NO. ZEROZERO—04 · 2025–2026</span>
         <h3>大豐環保<br>zero zero O2O商城</h3>
-        <p class="sheet-desc">在五個案例中，zero zero 是唯一從研究走進電商前台的作品。大豐環保希望把傳統回收站轉型為具備數位流通與社群連結能力的循環基地，我參與線上商城 zero zero 的產品規劃與服務設計，透過 AI 自動化上架與顧客旅程共創工作坊，串接線上下單與線下據點取貨的 O2O 體驗，逐步解決資訊不透明、場域負面印象與人力依賴等痛點，打造可規模複製的數位商城與實體營運雙軌模式，朝零廢棄、零污染的資源循環目標邁進。商城目前正式上線營運中。</p>
+        <p class="sheet-desc">在五個案例中，zero zero 是唯一從研究走進電商前台的作品。大豐環保希望把傳統回收站轉型為具備數位流通與社群連結能力的循環基地，我參與線上商城 zero zero 的產品規劃與服務設計，透過 <span class="hl">AI 自動化上架</span>與<span class="hl">顧客旅程共創工作坊</span>，串接線上下單與線下據點取貨的 <span class="hl">O2O 體驗</span>，逐步解決資訊不透明、場域負面印象與人力依賴等痛點，打造可規模複製的數位商城與實體營運雙軌模式，朝<span class="hl">零廢棄、零污染</span>的資源循環目標邁進。商城目前正式上線營運中。</p>
         <div class="tag-row">
           <span class="tag-chip">O2O 體驗設計</span>
           <span class="tag-chip">電商產品規劃</span>
           <span class="tag-chip">已上線</span>
         </div>
         <div class="titleblock">
-          <div><span class="k">Role</span><span class="v">電商產品規劃</span></div>
+          <div><span class="k">Role</span><span class="v">電商產品規劃／O2O服務整合</span></div>
           <div><span class="k">Partner</span><span class="v">白質設計</span></div>
           <div><span class="k">Status</span><span class="v">上線中</span></div>
         </div>
@@ -905,7 +909,7 @@ svg{ display:block; max-width:100%; height:auto; }
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. LIGHTUP—05 · 2024</span>
         <h3>光的再造<br>LIGHT IT UP</h3>
-        <p class="sheet-desc">「光的再造」是與恆隆行（Dyson 台灣代理商）旗下、主打循環永續的子品牌 restyle2050 合作，探索報廢吸塵器再生可行性的前導研究。模組化組裝系統由合作夥伴單挑概念工作室設計，讓報廢機身能重新拆解、組合成獨一無二的燈具；我與單挑共同負責商業模式研究與工作坊設計，邀請一般大眾親自動手參與、創作屬於自己的燈飾，透過實際體驗驗證假設，為後續是否投入正式營運提供決策依據。</p>
+        <p class="sheet-desc">「光的再造」是與恆隆行（Dyson 台灣代理商）旗下、主打循環永續的子品牌 <span class="hl">restyle2050</span> 合作，探索報廢吸塵器再生可行性的前導研究。<span class="hl">模組化組裝系統</span>由合作夥伴單挑概念工作室設計，讓報廢機身能重新拆解、組合成獨一無二的燈具；我與單挑共同負責<span class="hl">商業模式研究與工作坊設計</span>，邀請一般大眾親自動手參與、創作屬於自己的燈飾，透過實際體驗驗證假設，為後續是否投入正式營運提供決策依據。</p>
         <div class="tag-row">
           <span class="tag-chip">商業模式研究</span>
           <span class="tag-chip">工作坊設計</span>
