@@ -372,23 +372,27 @@ svg{ display:block; max-width:100%; height:auto; }
 .credentials .row .tag{ font-family:var(--font-mono); font-size:11px; color:var(--ochre); white-space:nowrap; padding-top:2px;}
 
 /* ===================== WORK / SHEETS ===================== */
-.work-intro{ padding:0 var(--edge); max-width:1280px; margin:0 auto 8px; }
+.work-intro{ padding:0 var(--edge); max-width:1280px; margin:0 auto 24px; }
+.work-transition{
+  height:64px;
+  background:linear-gradient(to bottom, var(--paper), var(--paper-warm));
+}
 
 .sheet{
   position:relative;
-  padding:96px 0;
+  padding:56px 0 96px;
   overflow:hidden;
 }
 .sheet-inner{
   max-width:1280px; margin:0 auto; padding:0 var(--edge);
   display:grid; grid-template-columns:0.92fr 1.08fr; gap:56px; align-items:start;
 }
-.sheet:nth-child(even) .sheet-inner{ grid-template-columns:1.08fr 0.92fr; }
-.sheet:nth-child(even) .sheet-text{ order:2; }
-.sheet:nth-child(even) .sheet-visual{ order:1; }
+.sheet:nth-of-type(odd) .sheet-inner{ grid-template-columns:1.08fr 0.92fr; }
+.sheet:nth-of-type(odd) .sheet-text{ order:2; }
+.sheet:nth-of-type(odd) .sheet-visual{ order:1; }
 @media (max-width:940px){
-  .sheet-inner, .sheet:nth-child(even) .sheet-inner{ grid-template-columns:1fr; }
-  .sheet:nth-child(even) .sheet-text, .sheet:nth-child(even) .sheet-visual{ order:0; }
+  .sheet-inner, .sheet:nth-of-type(odd) .sheet-inner{ grid-template-columns:1fr; }
+  .sheet:nth-of-type(odd) .sheet-text, .sheet:nth-of-type(odd) .sheet-visual{ order:0; }
 }
 
 .sheet--dark{ color:var(--paper-warm); }
@@ -496,7 +500,7 @@ svg{ display:block; max-width:100%; height:auto; }
 /* ===================== REAL ASSET GALLERY ===================== */
 .doc-gallery{ margin-top:18px; }
 .doc-gallery-label{
-  font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em;
+  font-family:var(--font-mono); font-size:12px; letter-spacing:0.1em;
   text-transform:uppercase; opacity:0.6; display:block; margin-bottom:10px;
 }
 .thumb-btn{
@@ -512,7 +516,7 @@ svg{ display:block; max-width:100%; height:auto; }
 
 .photo-cols{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
 .photo-col-label{
-  font-family:var(--font-mono); font-size:10px; letter-spacing:0.08em;
+  font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em;
   opacity:0.55; display:block; margin-bottom:8px;
 }
 .photo-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
@@ -562,7 +566,7 @@ svg{ display:block; max-width:100%; height:auto; }
   width:100%; display:block;
 }
 .video-demo-label{
-  font-family:var(--font-mono); font-size:10px; letter-spacing:0.08em;
+  font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em;
   text-transform:uppercase; opacity:0.55; display:block; margin-top:8px;
 }
 
@@ -690,14 +694,16 @@ svg{ display:block; max-width:100%; height:auto; }
 </section>
 
 <!-- ===================== WORK ===================== -->
-<section id="work">
+<section id="work" class="grid-stone">
   <div class="work-intro section-head reveal" style="margin-top:8px;">
     <span class="eyebrow" style="color:var(--ochre)">02 — Selected Work</span>
     <h2 style="color:var(--ink)">五份現場圖紙，五個還在運作的系統。</h2>
   </div>
 
+  <div class="work-transition"></div>
+
   <!-- CASE 1 — EDEN -->
-  <article class="sheet sheet--light grid-stone" id="case-eden">
+  <article class="sheet sheet--light grid-paper" id="case-eden">
     <div class="sheet-inner">
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. EDEN—01 · 2026</span>
@@ -732,7 +738,7 @@ svg{ display:block; max-width:100%; height:auto; }
   </article>
 
   <!-- CASE 2 — DASHUIGOU -->
-  <article class="sheet sheet--light grid-paper" id="case-dashuigou">
+  <article class="sheet sheet--light grid-stone" id="case-dashuigou">
     <div class="sheet-inner">
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. DASHUIGOU—02 · 2024</span>
@@ -753,24 +759,24 @@ svg{ display:block; max-width:100%; height:auto; }
       <div class="sheet-visual reveal">
         <svg viewBox="0 0 480 195" width="100%">
           <defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
-          <g font-family="IBM Plex Mono" font-size="10" opacity="0.75">
+          <g font-family="IBM Plex Mono" font-size="12.5" opacity="0.75">
             <text x="30" y="16">月均到店人次 MONTHLY VISITS</text>
           </g>
           <g stroke="currentColor" stroke-width="1" opacity="0.3"><line x1="30" y1="150" x2="450" y2="150"/></g>
           <rect x="70" y="90" width="46" height="60" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="93" y="80" text-anchor="middle" font-family="IBM Plex Mono" font-size="12">900</text>
-          <text x="93" y="168" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" opacity="0.65">改造前</text>
+          <text x="93" y="80" text-anchor="middle" font-family="IBM Plex Mono" font-size="15">900</text>
+          <text x="93" y="168" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" opacity="0.65">改造前</text>
           <rect x="150" y="50" width="46" height="100" fill="currentColor" opacity="0.9"/>
-          <text x="173" y="40" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" font-weight="700">1,350</text>
-          <text x="173" y="168" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" opacity="0.65">改造後</text>
+          <text x="173" y="40" text-anchor="middle" font-family="IBM Plex Mono" font-size="15" font-weight="700">1,350</text>
+          <text x="173" y="168" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" opacity="0.65">改造後</text>
           <g stroke="currentColor" stroke-width="1.3" fill="none" marker-end="url(#a1)">
             <path d="M120,80 C135,60 140,60 148,52" opacity="0.6"/>
           </g>
           <circle cx="345" cy="100" r="52" fill="none" stroke="currentColor" stroke-width="8" opacity="0.15"/>
           <circle cx="345" cy="100" r="52" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="311 327" stroke-linecap="round" transform="rotate(-90 345 100)"/>
-          <text x="345" y="94" text-anchor="middle" font-family="Space Grotesk" font-size="20" font-weight="700">95%</text>
-          <text x="345" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" opacity="0.65">滿意度</text>
-          <text x="345" y="178" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5">新客佔比 <tspan font-weight="700">62%</tspan></text>
+          <text x="345" y="94" text-anchor="middle" font-family="Space Grotesk" font-size="24" font-weight="700">95%</text>
+          <text x="345" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" opacity="0.65">滿意度</text>
+          <text x="345" y="178" text-anchor="middle" font-family="IBM Plex Mono" font-size="12">新客佔比 <tspan font-weight="700">62%</tspan></text>
         </svg>
         <div class="doc-gallery">
           <span class="doc-gallery-label">改造前後實景 · 點擊放大</span>
@@ -802,7 +808,7 @@ svg{ display:block; max-width:100%; height:auto; }
   </article>
 
   <!-- CASE 3 — TZUCHI -->
-  <article class="sheet sheet--light grid-stone" id="case-tzuchi">
+  <article class="sheet sheet--light grid-paper" id="case-tzuchi">
     <div class="sheet-inner">
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. TZUCHI—03 · 2024–2026</span>
@@ -821,18 +827,18 @@ svg{ display:block; max-width:100%; height:auto; }
       </div>
       <div class="sheet-visual reveal">
         <svg viewBox="0 0 480 190" width="100%">
-          <line x1="140" y1="65" x2="300" y2="115" stroke="currentColor" stroke-width="1.1" stroke-dasharray="2 6" opacity="0.55"/>
-          <circle cx="110" cy="55" r="32" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text x="110" y="54" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-size="8.3">中山八德惜福屋</text>
-          <text x="110" y="66" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-size="8" opacity="0.6">（北）</text>
-          <circle cx="330" cy="125" r="32" fill="none" stroke="currentColor" stroke-width="1.5"/>
-          <text x="330" y="124" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-size="9">鳳山工坊</text>
-          <text x="330" y="136" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-size="8" opacity="0.6">（南）</text>
-          <text x="130" y="153" font-family="IBM Plex Mono" font-size="9" opacity="0.6">同品牌 · 雙據點</text>
+          <line x1="148" y1="67" x2="292" y2="113" stroke="currentColor" stroke-width="1.1" stroke-dasharray="2 6" opacity="0.55"/>
+          <circle cx="110" cy="55" r="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="110" y="54" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-size="10.5">中山八德惜福屋</text>
+          <text x="110" y="66" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-size="10.5" opacity="0.6">（北）</text>
+          <circle cx="330" cy="125" r="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text x="330" y="124" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-size="11.5">鳳山工坊</text>
+          <text x="330" y="136" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-size="10.5" opacity="0.6">（南）</text>
+          <text x="130" y="153" font-family="IBM Plex Mono" font-size="11.5" opacity="0.6">同品牌 · 雙據點</text>
           <rect x="235" y="12" width="210" height="46" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-          <text x="247" y="31" font-family="IBM Plex Mono" font-size="10.5" font-weight="500">20+ 媒體報導</text>
-          <text x="247" y="47" font-family="IBM Plex Mono" font-size="10.5" font-weight="500">1,000+ 觸及人次</text>
-          <text x="20" y="179" font-family="IBM Plex Mono" font-size="9" opacity="0.5">上線首週數據 · WEEK 1 REACH</text>
+          <text x="247" y="31" font-family="IBM Plex Mono" font-size="13" font-weight="500">20+ 媒體報導</text>
+          <text x="247" y="47" font-family="IBM Plex Mono" font-size="13" font-weight="500">1,000+ 觸及人次</text>
+          <text x="20" y="179" font-family="IBM Plex Mono" font-size="11.5" opacity="0.5">上線首週數據 · WEEK 1 REACH</text>
         </svg>
         <div class="doc-gallery">
           <span class="doc-gallery-label">兩據點現場實景 · 點擊放大</span>
@@ -862,7 +868,7 @@ svg{ display:block; max-width:100%; height:auto; }
   </article>
 
   <!-- CASE 4 — ZEROZERO -->
-  <article class="sheet sheet--light grid-paper" id="case-zerozero">
+  <article class="sheet sheet--light grid-stone" id="case-zerozero">
     <div class="sheet-inner">
       <div class="sheet-text reveal">
         <span class="live-badge"><span class="pulse"></span>LIVE · 上線營運中</span>
@@ -888,13 +894,13 @@ svg{ display:block; max-width:100%; height:auto; }
           <path d="M240,42 A88,88 0 0 1 320,150" fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#a2)"/>
           <path d="M240,218 A88,88 0 0 1 160,110" fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#a2)"/>
           <circle cx="240" cy="42" r="26" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="240" y="38" text-anchor="middle" font-family="IBM Plex Mono" font-size="9">線上</text>
-          <text x="240" y="50" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" opacity="0.6">下單</text>
+          <text x="240" y="38" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5">線上</text>
+          <text x="240" y="50" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" opacity="0.6">下單</text>
           <circle cx="240" cy="218" r="26" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="240" y="214" text-anchor="middle" font-family="IBM Plex Mono" font-size="9">線下</text>
-          <text x="240" y="226" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" opacity="0.6">取貨</text>
-          <text x="240" y="134" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="700">O2O</text>
-          <text x="240" y="148" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" opacity="0.6">循環體驗</text>
+          <text x="240" y="214" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5">線下</text>
+          <text x="240" y="226" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" opacity="0.6">取貨</text>
+          <text x="240" y="134" text-anchor="middle" font-family="Space Grotesk" font-size="16" font-weight="700">O2O</text>
+          <text x="240" y="148" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" opacity="0.6">循環體驗</text>
         </svg>
         <div class="video-demo">
           <video autoplay loop muted playsinline poster="images/dafeng-demo-poster.jpg">
@@ -907,7 +913,7 @@ svg{ display:block; max-width:100%; height:auto; }
   </article>
 
   <!-- CASE 5 — LIGHT IT UP -->
-  <article class="sheet sheet--light grid-stone" id="case-lightitup">
+  <article class="sheet sheet--light grid-paper" id="case-lightitup">
     <div class="sheet-inner">
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. LIGHTUP—05 · 2024</span>
@@ -946,31 +952,32 @@ svg{ display:block; max-width:100%; height:auto; }
             <polygon points="345.3,36.3 338.1,37.2 343.2,43.2"/>
           </g>
           <g font-family="IBM Plex Mono" text-anchor="middle">
-            <text x="80" y="93" font-size="9.5" opacity="0.85">消費影響力循環</text>
-            <text x="80" y="105" font-size="8" opacity="0.55">賦予不完美價值</text>
-            <text x="215" y="93" font-size="9.5" opacity="0.85">生命週期再延長</text>
-            <text x="215" y="105" font-size="8" opacity="0.55">舊機整新再售</text>
-            <text x="350" y="93" font-size="9.5" opacity="0.85">產品新生新循環</text>
-            <text x="350" y="105" font-size="8" opacity="0.55">分解再生原料</text>
-            <text x="80" y="126" font-size="9.5" font-weight="500" letter-spacing="0.5">A+ A A-</text>
-            <text x="215" y="126" font-size="9.5" font-weight="500" letter-spacing="0.5">R1 R2</text>
-            <text x="350" y="126" font-size="9.5" font-weight="500" letter-spacing="0.5">Rn</text>
+            <text x="80" y="93" font-size="12" opacity="0.85">消費影響力循環</text>
+            <text x="80" y="105" font-size="10.5" opacity="0.55">賦予不完美價值</text>
+            <text x="215" y="93" font-size="12" opacity="0.85">生命週期再延長</text>
+            <text x="215" y="105" font-size="10.5" opacity="0.55">舊機整新再售</text>
+            <text x="350" y="93" font-size="12" opacity="0.85">產品新生新循環</text>
+            <text x="350" y="105" font-size="10.5" opacity="0.55">分解再生原料</text>
+            <text x="80" y="126" font-size="12" font-weight="500" letter-spacing="0.5">A+ A A-</text>
+            <text x="215" y="126" font-size="12" font-weight="500" letter-spacing="0.5">R1 R2</text>
+            <text x="350" y="126" font-size="12" font-weight="500" letter-spacing="0.5">Rn</text>
           </g>
 
           <!-- Emphasis: design regeneration & member reward loop -->
           <path d="M362,120 C420,150 440,95 495,62" fill="none" stroke="#B8842B" stroke-width="1.3" stroke-dasharray="1 5" opacity="0.9"/>
           <rect x="385" y="150" width="168" height="24" fill="none" stroke="#B8842B" stroke-width="1" opacity="0.85"/>
-          <text x="469" y="166" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" fill="#B8842B" font-weight="500">報廢產品再製轉化會員贈品</text>
+          <text x="469" y="166" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#B8842B" font-weight="500">報廢產品再製轉化會員贈品</text>
           <g transform="translate(497,55) rotate(45)" fill="none" stroke="#B8842B" stroke-width="1.4">
             <rect x="-8" y="-8" width="16" height="16"/>
           </g>
-          <text x="520" y="52" font-family="IBM Plex Mono" font-size="10.5" font-weight="700" fill="#B8842B">設計再生與</text>
-          <text x="520" y="67" font-family="IBM Plex Mono" font-size="10.5" font-weight="700" fill="#B8842B">會員回饋機制</text>
-          <text x="520" y="84" font-family="IBM Plex Mono" font-size="8" fill="#B8842B" opacity="0.75">廢棄機身以設計轉譯再利用</text>
+          <text x="520" y="52" font-family="IBM Plex Mono" font-size="13" font-weight="700" fill="#B8842B">設計再生與</text>
+          <text x="520" y="67" font-family="IBM Plex Mono" font-size="13" font-weight="700" fill="#B8842B">會員回饋機制</text>
+          <text x="520" y="84" font-family="IBM Plex Mono" font-size="10.5" fill="#B8842B" opacity="0.75">廢棄機身以設計</text>
+          <text x="520" y="98" font-family="IBM Plex Mono" font-size="10.5" fill="#B8842B" opacity="0.75">轉譯再利用</text>
 
           <line x1="30" y1="141" x2="380" y2="141" stroke="currentColor" stroke-width="1" opacity="0.2"/>
-          <text x="215" y="158" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" opacity="0.5">循環經濟商業模式 · RESTYLE 2050</text>
-          <text x="215" y="180" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" opacity="0.7">工作坊參與者 WORKSHOP</text>
+          <text x="215" y="158" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" opacity="0.5">循環經濟商業模式 · RESTYLE 2050</text>
+          <text x="215" y="180" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" opacity="0.7">工作坊參與者 WORKSHOP</text>
           <g stroke="currentColor" stroke-width="1.2" fill="none">
             <circle cx="215" cy="195" r="9"/><circle cx="187" cy="208" r="9"/><circle cx="243" cy="208" r="9"/>
             <circle cx="215" cy="221" r="9"/>
@@ -994,7 +1001,7 @@ svg{ display:block; max-width:100%; height:auto; }
 </section>
 
 <!-- ===================== FOOTER / CONTACT ===================== -->
-<footer id="contact" class="footer footer--light grid-paper">
+<footer id="contact" class="footer footer--light grid-stone">
   <div class="footer-inner reveal">
     <span class="eyebrow">03 — Contact</span>
     <h2>想聊聊<br>下一個案子嗎？</h2>
