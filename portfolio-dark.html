@@ -36,8 +36,8 @@
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; }
 body{
-  background: var(--paper-warm);
-  color: var(--ink);
+  background: var(--navy-deep);
+  color: var(--paper-warm);
   font-family: var(--font-body);
   font-size:16px;
   line-height:1.9;
@@ -70,6 +70,12 @@ svg{ display:block; max-width:100%; height:auto; }
 /* Blueprint dot-grid texture, dark sections */
 .grid-navy{
   background-color:var(--navy);
+  background-image:
+    radial-gradient(var(--line-on-navy) 1px, transparent 1px);
+  background-size:28px 28px;
+}
+.grid-navy-deep{
+  background-color:var(--navy-deep);
   background-image:
     radial-gradient(var(--line-on-navy) 1px, transparent 1px);
   background-size:28px 28px;
@@ -117,6 +123,13 @@ svg{ display:block; max-width:100%; height:auto; }
 }
 .nav-links a:hover, .nav-links a.active{ color:var(--paper-warm); }
 .nav-links a:hover::after, .nav-links a.active::after{ width:100%; }
+.nav-links a.theme-toggle-link{
+  border:1px solid var(--line-on-navy);
+  border-radius:20px;
+  padding:5px 14px 6px;
+}
+.nav-links a.theme-toggle-link::after{ display:none; }
+.nav-links a.theme-toggle-link:hover{ border-color:var(--paper-warm); }
 .nav-toggle{ display:none; color:var(--paper-warm); font-size:22px; }
 
 @media (max-width:760px){
@@ -243,8 +256,16 @@ svg{ display:block; max-width:100%; height:auto; }
 .stack-card:nth-child(3) .stack-card-inner{ background:#838C8E; border-color:rgba(18,40,58,0.45); }
 .stack-card:nth-child(4){ color:var(--paper-warm); }
 .stack-card:nth-child(4) .stack-card-inner{ background:#4A5A64; border-color:var(--cyan-dim); }
-.stack-card:nth-child(5){ color:var(--paper-warm); }
-.stack-card:nth-child(5) .stack-card-inner{ background:var(--navy); border-color:var(--cyan); }
+.stack-card:nth-child(5){ color:var(--paper-warm); position:relative; }
+.stack-card:nth-child(5) .stack-card-inner{ background:var(--navy); border:none; }
+.stack-card:nth-child(5){ filter:drop-shadow(0 3px 10px rgba(0,0,0,0.4)); }
+.stack-card:nth-child(5)::before{
+  content:'';
+  position:absolute; inset:-1px;
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
+  background:var(--cyan);
+  z-index:-1;
+}
 .stack-card:nth-child(1) .stack-code, .stack-card:nth-child(2) .stack-code{ color:var(--navy); opacity:0.65; }
 .stack-card:nth-child(3) .stack-code{ color:#243A49; opacity:0.85; }
 .stack-card:nth-child(4) .stack-code, .stack-card:nth-child(5) .stack-code{ color:var(--cyan); opacity:0.85; }
@@ -320,7 +341,7 @@ svg{ display:block; max-width:100%; height:auto; }
 .section-wrap{ padding:112px 0; }
 
 /* ===================== ABOUT ===================== */
-.about{ color:var(--ink); }
+.about{ color:var(--paper-warm); }
 .about-grid{
   max-width:1280px; margin:0 auto; padding:0 var(--edge);
   display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start;
@@ -331,50 +352,49 @@ svg{ display:block; max-width:100%; height:auto; }
 .about-title h2{
   font-family:var(--font-display); font-weight:700;
   font-size:clamp(26px, 3.4vw, 38px);
-  margin-top:14px; color:var(--ink);
+  margin-top:14px; color:var(--paper-warm);
 }
-.about-body p{ font-size:16px; color:var(--ink-soft); max-width:56ch; margin-bottom:18px; text-align:justify; }
+.about-body p{ font-size:16px; color:rgba(244,239,223,0.8); max-width:56ch; margin-bottom:18px; text-align:justify; }
 .hl{ font-weight:700; color:var(--ochre-bright); }
-.about-body .hl{ color:var(--ochre); }
 .sheet--light .hl{ color:var(--ochre); }
 .footer--light .hl{ color:var(--ochre); }
 .about-body p:last-child{ margin-bottom:0; }
 
 .legend-box{
-  border:1px solid var(--line-on-paper);
+  border:1px solid var(--line-on-navy);
   padding:26px 28px;
 }
 .legend-title{
   font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.12em;
-  text-transform:uppercase; color:var(--ochre); margin-bottom:18px;
-  display:flex; justify-content:space-between; border-bottom:1px dashed var(--line-on-paper); padding-bottom:12px;
+  text-transform:uppercase; color:var(--ochre-bright); margin-bottom:18px;
+  display:flex; justify-content:space-between; border-bottom:1px dashed var(--line-on-navy); padding-bottom:12px;
 }
 .legend-list{ display:flex; flex-direction:column; gap:0; }
 .legend-list li{
   display:flex; align-items:center; gap:12px;
-  padding:9px 0; border-bottom:1px solid var(--line-on-paper);
+  padding:9px 0; border-bottom:1px solid var(--line-on-navy);
   font-family:var(--font-mono); font-size:13px; letter-spacing:0.02em;
-  color:var(--ink);
+  color:var(--paper-warm);
 }
 .legend-list li:last-child{ border-bottom:none; }
-.legend-list .mark{ width:9px; height:9px; border:1.4px solid var(--navy); flex-shrink:0; }
+.legend-list .mark{ width:9px; height:9px; border:1.4px solid var(--cyan); flex-shrink:0; }
 .legend-list .mark.dot{ border-radius:50%; }
-.legend-list .mark.tri{ border:none; width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-bottom:9px solid var(--navy); }
+.legend-list .mark.tri{ border:none; width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-bottom:9px solid var(--cyan); }
 
 .credentials{ margin-top:28px; }
 .credentials .row{
   display:flex; justify-content:space-between; gap:16px;
-  padding:12px 0; border-top:1px solid var(--line-on-paper);
-  font-size:13.5px; color:var(--ink-soft);
+  padding:12px 0; border-top:1px solid var(--line-on-navy);
+  font-size:13.5px; color:rgba(244,239,223,0.8);
 }
 .credentials .row span:first-child{ min-width:0; }
-.credentials .row .tag{ font-family:var(--font-mono); font-size:11px; color:var(--ochre); white-space:nowrap; padding-top:2px;}
+.credentials .row .tag{ font-family:var(--font-mono); font-size:11px; color:var(--ochre-bright); white-space:nowrap; padding-top:2px;}
 
 /* ===================== WORK / SHEETS ===================== */
 .work-intro{ padding:0 var(--edge); max-width:1280px; margin:0 auto 24px; }
 .work-transition{
   height:64px;
-  background:linear-gradient(to bottom, var(--paper), var(--paper-warm));
+  background:linear-gradient(to bottom, var(--navy), var(--navy-deep));
 }
 
 .sheet{
@@ -426,16 +446,17 @@ svg{ display:block; max-width:100%; height:auto; }
   display:grid; grid-template-columns:repeat(3,1fr);
   font-family:var(--font-mono);
 }
-.titleblock div{ padding:10px 14px; border-right:1px solid; border-color:inherit; }
+.titleblock div{ padding:10px 14px; border-right:1px solid; border-color:inherit; display:flex; flex-direction:column; }
 .titleblock div:last-child{ border-right:none; }
 .titleblock .k{ font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:5px; }
-.titleblock .v{ font-size:12.5px; }
+.titleblock .v{ font-size:12.5px; flex:1; display:flex; align-items:center; }
 
 .sheet-visual{
   border:1px solid var(--line-on-navy);
   padding:22px;
 }
 .sheet--light .sheet-visual{ border-color:var(--line-on-paper); }
+.sheet-visual svg text:not([fill]){ fill:currentColor; }
 
 .photo-slot{
   margin-top:16px;
@@ -579,6 +600,7 @@ svg{ display:block; max-width:100%; height:auto; }
     <li><a href="#work">Work</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="resume_2026.pdf" target="_blank" rel="noopener">完整履歷 ↗</a></li>
+    <li><a href="index.html" class="theme-toggle-link">☀️ 淺色模式</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="開啟選單">☰</button>
 </nav>
@@ -650,7 +672,7 @@ svg{ display:block; max-width:100%; height:auto; }
 
 
 <!-- ===================== ABOUT ===================== -->
-<section id="about" class="about grid-paper section-wrap">
+<section id="about" class="about grid-navy-deep section-wrap">
   <div class="about-grid">
     <div class="about-left reveal">
       <div class="about-title">
@@ -685,16 +707,16 @@ svg{ display:block; max-width:100%; height:auto; }
 </section>
 
 <!-- ===================== WORK ===================== -->
-<section id="work" class="grid-stone">
+<section id="work" class="grid-navy">
   <div class="work-intro section-head reveal" style="margin-top:8px;">
-    <span class="eyebrow" style="color:var(--ochre)">02 — Selected Work</span>
-    <h2 style="color:var(--ink)">五份現場圖紙，五個還在運作的系統。</h2>
+    <span class="eyebrow" style="color:var(--ochre-bright)">02 — Selected Work</span>
+    <h2 style="color:var(--paper-warm)">五份現場圖紙，五個還在運作的系統。</h2>
   </div>
 
   <div class="work-transition"></div>
 
   <!-- CASE 1 — EDEN -->
-  <article class="sheet sheet--light grid-paper" id="case-eden">
+  <article class="sheet sheet--dark grid-navy-deep" id="case-eden">
     <div class="sheet-inner">
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. EDEN—01 · 2026</span>
@@ -799,7 +821,7 @@ svg{ display:block; max-width:100%; height:auto; }
   </article>
 
   <!-- CASE 3 — TZUCHI -->
-  <article class="sheet sheet--light grid-paper" id="case-tzuchi">
+  <article class="sheet sheet--dark grid-navy-deep" id="case-tzuchi">
     <div class="sheet-inner">
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. TZUCHI—03 · 2024–2026</span>
@@ -872,7 +894,7 @@ svg{ display:block; max-width:100%; height:auto; }
           <span class="tag-chip">已上線</span>
         </div>
         <div class="titleblock">
-          <div><span class="k">Role</span><span class="v">電商產品規劃／O2O服務整合</span></div>
+          <div><span class="k">Role</span><span class="v">電商產品規劃<br>O2O服務整合</span></div>
           <div><span class="k">Partner</span><span class="v">白質設計</span></div>
           <div><span class="k">Status</span><span class="v">上線中</span></div>
         </div>
@@ -904,7 +926,7 @@ svg{ display:block; max-width:100%; height:auto; }
   </article>
 
   <!-- CASE 5 — LIGHT IT UP -->
-  <article class="sheet sheet--light grid-paper" id="case-lightitup">
+  <article class="sheet sheet--dark grid-navy-deep" id="case-lightitup">
     <div class="sheet-inner">
       <div class="sheet-text reveal">
         <span class="sheet-code">NO. LIGHTUP—05 · 2024</span>

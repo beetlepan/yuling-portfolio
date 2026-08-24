@@ -123,6 +123,13 @@ svg{ display:block; max-width:100%; height:auto; }
 }
 .nav-links a:hover, .nav-links a.active{ color:var(--ink); }
 .nav-links a:hover::after, .nav-links a.active::after{ width:100%; }
+.nav-links a.theme-toggle-link{
+  border:1px solid var(--line-on-paper);
+  border-radius:20px;
+  padding:5px 14px 6px;
+}
+.nav-links a.theme-toggle-link::after{ display:none; }
+.nav-links a.theme-toggle-link:hover{ border-color:var(--ink); }
 .nav-toggle{ display:none; color:var(--ink); font-size:22px; }
 
 @media (max-width:760px){
@@ -431,10 +438,10 @@ svg{ display:block; max-width:100%; height:auto; }
   display:grid; grid-template-columns:repeat(3,1fr);
   font-family:var(--font-mono);
 }
-.titleblock div{ padding:10px 14px; border-right:1px solid; border-color:inherit; }
+.titleblock div{ padding:10px 14px; border-right:1px solid; border-color:inherit; display:flex; flex-direction:column; }
 .titleblock div:last-child{ border-right:none; }
 .titleblock .k{ font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:5px; }
-.titleblock .v{ font-size:12.5px; }
+.titleblock .v{ font-size:12.5px; flex:1; display:flex; align-items:center; }
 
 .sheet-visual{
   border:1px solid var(--line-on-navy);
@@ -592,6 +599,7 @@ svg{ display:block; max-width:100%; height:auto; }
     <li><a href="#work">Work</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="resume_2026.pdf" target="_blank" rel="noopener">完整履歷 ↗</a></li>
+    <li><a href="portfolio-dark.html" class="theme-toggle-link">🌙 夜間模式</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="開啟選單">☰</button>
 </nav>
@@ -885,7 +893,7 @@ svg{ display:block; max-width:100%; height:auto; }
           <span class="tag-chip">已上線</span>
         </div>
         <div class="titleblock">
-          <div><span class="k">Role</span><span class="v">電商產品規劃／O2O服務整合</span></div>
+          <div><span class="k">Role</span><span class="v">電商產品規劃<br>O2O服務整合</span></div>
           <div><span class="k">Partner</span><span class="v">白質設計</span></div>
           <div><span class="k">Status</span><span class="v">上線中</span></div>
         </div>
