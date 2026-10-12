@@ -166,7 +166,7 @@ svg{ display:block; max-width:100%; height:auto; }
 
 .hero-inner{
   display:grid;
-  grid-template-columns:1fr 1.05fr;
+  grid-template-columns:1.2fr 1fr;
   gap:48px;
   align-items:center;
   max-width:1280px;
@@ -221,111 +221,85 @@ svg{ display:block; max-width:100%; height:auto; }
   color:rgba(244,239,223,0.55); margin-top:4px;
 }
 
-/* Signature: stacked blueprint-sheet cards */
-.hero-diagram{ display:flex; flex-direction:column; align-items:center; gap:24px; min-width:0; }
-.sheet-stack-wrap{
-  display:flex; flex-direction:column; align-items:center; gap:24px;
-  width:calc(5 * var(--card-w) - 4 * var(--overlap)); max-width:100%;
-  --card-w:210px; --overlap:78px;
-  position:relative;
+/* ===================== HERO VIEWER (framed photo + numbered tabs) ===================== */
+:root{ --hv-line:var(--cyan); --hv-dur:4.8s; }
+html[data-theme="light"]{ --hv-line:var(--cyan-dim); }
+.hv{ min-width:0; display:flex; flex-direction:column; gap:18px; }
+.hv-wrap{ position:relative; padding:14px; }
+/* registration ticks on three corners (the fourth is the cut corner) */
+.hv-tick{ position:absolute; width:14px; height:14px; border:0 solid var(--hv-line); opacity:0.8; }
+.hv-tick.tl{ left:0; top:0; border-top-width:1px; border-left-width:1px; }
+.hv-tick.bl{ left:0; bottom:0; border-bottom-width:1px; border-left-width:1px; }
+.hv-tick.br{ right:0; bottom:0; border-bottom-width:1px; border-right-width:1px; }
+.hv-frame{
+  position:relative; display:block; aspect-ratio:3 / 2; background:var(--hv-line);
+  clip-path:polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%);
+  filter:drop-shadow(0 14px 26px rgba(0,0,0,0.28));
 }
-.sheet-stack{
-  display:flex; align-items:flex-end; justify-content:flex-start; min-width:0;
-  width:100%; padding:14px 0 6px; overflow-x:visible;
+.hv-inner{
+  position:absolute; inset:1px; overflow:hidden; background:var(--navy-deep);
+  clip-path:polygon(0 0, calc(100% - 33.4px) 0, 100% 33.4px, 100% 100%, 0 100%);
 }
-.stack-card{
-  position:relative; width:var(--card-w); height:150px; flex-shrink:0;
-  margin-left:calc(-1 * var(--overlap));
-  display:block;
-  text-decoration:none;
-  transition:transform 0.3s ease, filter 0.3s ease;
+.hv-img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:var(--pos, 50% 50%);
+  opacity:0; transform:scale(1.045);
+  transition:opacity 0.8s ease, transform 5.5s ease-out;
 }
-.stack-card:first-child{ margin-left:0; }
-.stack-card-inner{
-  position:absolute; inset:0;
-  border:1px solid var(--cyan);
-  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
-  padding:16px 18px;
-  display:flex; flex-direction:column; justify-content:flex-start;
-  transition:border-color 0.3s ease;
+.hv-img.on{ opacity:1; transform:scale(1); }
+
+/* mock-up slide: two stacked blueprint sheets on a dotted board (used when a case has no photo) */
+.hv-mock{
+  background-color:var(--navy);
+  background-image:radial-gradient(var(--line-on-navy) 1px, transparent 1px), radial-gradient(120% 90% at 30% 20%, rgba(134,198,207,0.10), transparent 60%);
+  background-size:28px 28px, auto;
 }
-/* Right-to-left gradient: navy blueprint fading to warm cream */
-.stack-card:nth-child(1){ color:var(--navy); }
-.stack-card:nth-child(1) .stack-card-inner{ background:#F4EFE3; border-color:rgba(18,40,58,0.35); }
-.stack-card:nth-child(2){ color:var(--navy); }
-.stack-card:nth-child(2) .stack-card-inner{ background:#BCBDB9; border-color:rgba(18,40,58,0.4); }
-.stack-card:nth-child(3){ color:#243A49; }
-.stack-card:nth-child(3) .stack-card-inner{ background:#838C8E; border-color:rgba(18,40,58,0.45); }
-.stack-card:nth-child(4){ color:var(--paper-warm); }
-.stack-card:nth-child(4) .stack-card-inner{ background:#4A5A64; border-color:var(--cyan-dim); }
-.stack-card:nth-child(5){ color:var(--paper-warm); position:relative; }
-.stack-card:nth-child(5) .stack-card-inner{ background:var(--navy); border:none; }
-.stack-card:nth-child(5){ filter:drop-shadow(0 3px 10px rgba(0,0,0,0.4)); }
-.stack-card:nth-child(5)::before{
-  content:'';
-  position:absolute; inset:-1px;
-  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
-  background:var(--cyan);
-  z-index:-1;
+.hv-sheet{
+  position:absolute; width:68%; height:auto; background:#fff;
+  border:1px solid rgba(18,42,60,0.25);
+  box-shadow:0 18px 34px rgba(0,0,0,0.38), 0 2px 6px rgba(0,0,0,0.25);
+  transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
 }
-.stack-card:nth-child(1) .stack-code, .stack-card:nth-child(2) .stack-code{ color:var(--navy); opacity:0.65; }
-.stack-card:nth-child(3) .stack-code{ color:#243A49; opacity:0.85; }
-.stack-card:nth-child(4) .stack-code, .stack-card:nth-child(5) .stack-code{ color:var(--cyan); opacity:0.85; }
-.stack-card:nth-child(1) .stack-more, .stack-card:nth-child(2) .stack-more, .stack-card:nth-child(3) .stack-more{ color:var(--ochre); }
-.stack-card:nth-child(4) .stack-more, .stack-card:nth-child(5) .stack-more{ color:var(--ochre-bright); }
-.stack-card:nth-child(1) .stack-date, .stack-card:nth-child(2) .stack-date{ color:var(--navy); opacity:0.5; }
-.stack-card:nth-child(3) .stack-date{ color:#243A49; opacity:0.7; }
-.stack-card:nth-child(4) .stack-date, .stack-card:nth-child(5) .stack-date{ color:var(--paper-warm); opacity:0.4; }
-.stack-card:hover, .stack-card:focus-visible{
-  transform:translateY(-18px) rotate(-15deg);
-  z-index:10;
-  filter:
-    drop-shadow(0 16px 22px rgba(0,0,0,0.4))
-    drop-shadow(0 0 26px rgba(214,160,63,0.55))
-    drop-shadow(0 0 52px rgba(214,160,63,0.3));
+.hv-sheet.back{ left:5%; top:6%; transform:rotate(-4.5deg) translateY(10px); }
+.hv-sheet.front{ right:5%; top:25%; transform:rotate(3deg) translateY(14px); }
+.hv-mock.on .hv-sheet.back{ transform:rotate(-4.5deg); }
+.hv-mock.on .hv-sheet.front{ transform:rotate(3deg); }
+.hv-cap{
+  position:absolute; left:0; right:0; bottom:0; z-index:2;
+  padding:46px 18px 16px;
+  background:linear-gradient(to top, rgba(8,20,30,0.86), rgba(8,20,30,0));
+  color:#F4EFDF; display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
 }
-.stack-code{
-  font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em;
-  color:var(--cyan); opacity:0.85;
+.hv-cap-code{ display:block; font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; color:var(--ochre-bright); margin-bottom:4px; }
+.hv-cap-name{ display:block; font-family:var(--font-display); font-weight:700; font-size:clamp(15px, 1.5vw, 19px); line-height:1.3; }
+.hv-cap-go{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.06em; white-space:nowrap; opacity:0.85; }
+.hv-frame:hover .hv-cap-go{ opacity:1; color:var(--ochre-bright); }
+.hv-tabs{ display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; padding:0 14px; }
+.hv-tab{
+  position:relative; text-align:left; cursor:pointer; background:none; border:0;
+  padding:12px 0 0; color:inherit; font-family:var(--font-mono); font-size:11px; letter-spacing:0.03em;
+  opacity:0.55; transition:opacity 0.25s ease; min-width:0;
 }
-.stack-name{
-  font-family:var(--font-display); font-size:17px; font-weight:600;
-  line-height:1.35; margin-top:12px;
-}
-.stack-more{
-  font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.03em;
-  color:var(--ochre-bright);
-  opacity:0; max-height:0; overflow:hidden; margin-top:10px;
-  transition:opacity 0.3s ease 0.08s;
-}
-.stack-card:hover .stack-more{ opacity:1; }
-.stack-date{
-  position:absolute; right:16px; bottom:12px;
-  font-family:var(--font-mono); font-size:9px; letter-spacing:0.02em;
-  color:var(--paper-warm); opacity:0.4;
-}
-.stack-hint{
-  font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.06em;
-  color:rgba(244,239,223,0.45);
-  position:absolute; left:50%; top:100%; margin-top:24px; transform:translateX(-50%);
-  white-space:nowrap;
+.hv-tab::before{ content:''; position:absolute; left:0; right:0; top:0; height:2px; background:var(--line-on-navy); }
+html[data-theme="light"] .hv-tab::before{ background:var(--line-on-paper); }
+.hv-tab i{ position:absolute; left:0; top:0; height:2px; width:0; background:var(--ochre-bright); }
+html[data-theme="light"] .hv-tab i{ background:var(--ochre); }
+.hv-tab b{ display:block; font-weight:500; color:var(--ochre-bright); margin-bottom:3px; }
+html[data-theme="light"] .hv-tab b{ color:var(--ochre); }
+.hv-tab span{ display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.hv-tab:hover, .hv-tab:focus-visible, .hv-tab.on{ opacity:1; }
+.hv-tab.on i{ animation:hv-prog var(--hv-dur) linear forwards; }
+.hv.paused .hv-tab.on i{ animation:none; width:100%; }
+@keyframes hv-prog{ from{ width:0; } to{ width:100%; } }
+@media (prefers-reduced-motion: reduce){
+  .hv-tab.on i{ animation:none; width:100%; }
+  .hv-img{ transition:opacity 0.3s ease; transform:none; }
 }
 @media (max-width:560px){
-  .stack-hint{ position:static; left:auto; top:auto; margin-top:0; transform:none; text-align:center; }
-  .sheet-stack-wrap{ --card-w:190px; --overlap:0px; }
-  .sheet-stack{
-    justify-content:flex-start;
-    overflow-x:auto;
-    padding:14px 20px 14px;
-    scroll-snap-type:x proximity;
-    -webkit-overflow-scrolling:touch;
-  }
-  .stack-card{ margin-left:14px; scroll-snap-align:start; flex-shrink:0; }
-  .stack-card:first-child{ margin-left:0; }
-  .stack-card{ height:118px; }
-  .stack-card-inner{ padding:12px 14px; }
-  .stack-name{ font-size:13px; }
-  .stack-card:hover, .stack-card:focus-visible{ transform:none; filter:none; }
+  .hv-wrap{ padding:10px; }
+  .hv-tabs{ padding:0 10px; gap:6px; }
+  .hv-tab{ font-size:10px; }
+  .hv-cap-go{ display:none; }
 }
 
 /* ===================== SECTION HEADERS (shared) ===================== */
@@ -393,9 +367,9 @@ svg{ display:block; max-width:100%; height:auto; }
 .credentials .row .tag{ font-family:var(--font-mono); font-size:11px; color:var(--ochre-bright); white-space:nowrap; padding-top:2px;}
 
 /* ===================== WORK / SHEETS ===================== */
-.work-intro{ padding:0 var(--edge); max-width:1280px; margin:0 auto 24px; }
+.work-intro{ padding:0 var(--edge); max-width:1280px; margin:0 auto; }
 .work-transition{
-  height:64px;
+  height:40px;
   background:linear-gradient(to bottom, var(--navy), var(--navy-deep));
 }
 
@@ -404,6 +378,7 @@ svg{ display:block; max-width:100%; height:auto; }
   padding:56px 0 96px;
   overflow:hidden;
 }
+.sheet:first-of-type{ padding-top:32px; }
 .sheet-inner{
   max-width:1280px; margin:0 auto; padding:0 var(--edge);
   display:grid; grid-template-columns:0.92fr 1.08fr; gap:56px; align-items:start;
@@ -637,25 +612,6 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
   :where(html[data-theme="light"]) .hero-stat .num{ color:var(--navy); }
   :where(html[data-theme="light"]) .hero-stat .num span{ color:var(--ochre); }
   :where(html[data-theme="light"]) .hero-stat .label{ color:rgba(23,33,28,0.55); }
-  :where(html[data-theme="light"]) .stack-card-inner{ border:1px solid var(--cyan-dim); }
-  :where(html[data-theme="light"]) .stack-card{ color:var(--navy); }
-  :where(html[data-theme="light"]) .stack-card:nth-child(1) .stack-card-inner{ background:#E0E6E8; border-color:transparent; }
-  :where(html[data-theme="light"]) .stack-card:nth-child(2) .stack-card-inner{ background:#ACB6BC; border-color:transparent; }
-  :where(html[data-theme="light"]) .stack-card:nth-child(3) .stack-card-inner{ background:#798791; border-color:transparent; }
-  :where(html[data-theme="light"]) .stack-card:nth-child(4) .stack-card-inner{ background:#465866; border-color:transparent; }
-  :where(html[data-theme="light"]) .stack-card:nth-child(5) .stack-card-inner{ border-color:transparent; }
-  :where(html[data-theme="light"]) .stack-card:nth-child(1), :where(html[data-theme="light"]) .stack-card:nth-child(2){ color:var(--navy); }
-  :where(html[data-theme="light"]) .stack-card:nth-child(4), :where(html[data-theme="light"]) .stack-card:nth-child(5){ color:var(--paper-warm); }
-  :where(html[data-theme="light"]) .stack-card:nth-child(1) .stack-code, :where(html[data-theme="light"]) .stack-card:nth-child(2) .stack-code{ opacity:0.7; }
-  :where(html[data-theme="light"]) .stack-card:nth-child(4) .stack-date, :where(html[data-theme="light"]) .stack-card:nth-child(5) .stack-date{ opacity:0.45; }
-  :where(html[data-theme="light"]) .stack-card:hover, :where(html[data-theme="light"]) .stack-card:focus-visible{ filter: drop-shadow(0 16px 22px rgba(18,42,60,0.3)) drop-shadow(0 0 24px rgba(184,132,43,0.5)) drop-shadow(0 0 48px rgba(184,132,43,0.25)); }
-  :where(html[data-theme="light"]) .stack-code{ color:var(--navy); opacity:0.75; }
-  :where(html[data-theme="light"]) .stack-more{ color:var(--ochre); }
-  :where(html[data-theme="light"]) .stack-date{ color:var(--navy); opacity:0.55; }
-  :where(html[data-theme="light"]) .stack-hint{ color:var(--ink-soft); opacity:0.7; }
-@media (max-width:560px){
-  :where(html[data-theme="light"]) .stack-card{ margin-left:14px; scroll-snap-align:start; flex-shrink:0; }
-}
   :where(html[data-theme="light"]) .about{ color:var(--ink); }
   :where(html[data-theme="light"]) .about-title h2{ color:var(--ink); }
   :where(html[data-theme="light"]) .about-body p{ color:var(--ink-soft); }
@@ -682,10 +638,6 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
   :where(html[data-theme="light"]) .grid-navy-deep{ background-color:var(--paper-warm);
     background-image:radial-gradient(var(--line-on-paper) 1px, transparent 1px); }
   /* light: hero card 5 has no border layer / shadow */
-  :where(html[data-theme="light"]) .stack-card:nth-child(5)::before{ display:none; }
-  :where(html[data-theme="light"]) .stack-card:nth-child(5):not(:hover){ filter:none; }
-  :where(html[data-theme="light"]) .stack-card:nth-child(5) .stack-card-inner{ border:1px solid transparent; }
-  :where(html[data-theme="light"]) .stack-card:nth-child(1) .stack-more, :where(html[data-theme="light"]) .stack-card:nth-child(2) .stack-more, :where(html[data-theme="light"]) .stack-card:nth-child(3) .stack-more{ color:var(--ochre); }
 
   :where(html[data-theme="light"]) .nav-links button.theme-toggle-link{ color:rgba(23,33,28,0.65); }
   :where(html[data-theme="light"]) .nav-links button.theme-toggle-link:hover{ color:var(--ink); }
@@ -722,12 +674,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
         <div class="hero-stat"><div class="num"><span>2</span></div><div class="label">PAPERS · 國際發表</div></div>
       </div>
     </div>
-    <div class="hero-diagram">
-      <div class="sheet-stack-wrap">
-      <div class="sheet-stack" id="heroStack"></div>
-      <div class="stack-hint">滑鼠移到圖紙預覽 · 點選查看案例 ↑</div>
-      </div>
-    </div>
+    <div class="hv" id="heroView"></div>
   </div>
 </header>
 
@@ -936,23 +883,24 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
    desc 內 **文字** = 金色強調；title / cardName / facts 內 \n = 換行
    galleries 的 thumb 省略時，自動使用「檔名-thumb.副檔名」
    圖解 SVG 與影片放在頁尾的 <template id="vis-案例id"> 區塊
-   順序 = 頁面順序（也是首頁圖卡順序）
+   heroImg / heroPos = 首頁右側取景框的照片與裁切焦點（x% y%）；
+   沒有現場照的案例可改用 heroMock: [圖1, 圖2]，會做成兩張疊放的圖紙
+   順序 = 頁面順序（也是首頁照片順序）
    ===================================================================== */
 const CASES = [
   {
     id: "eden",
+    heroMock: ["images/eden-collection-flow.png", "images/eden-ragic-flow.png"],
     code: "NO. EDEN—01 · 2026",
     cardCode: "NO. EDEN—01",
     cardName: "伊甸基金會\n計畫徵件系統",
-    cardMore: "流程統籌／介面規劃",
-    cardDate: "2026.04 – 2026.05",
     title: "伊甸基金會\n計畫徵件系統",
-    desc: "伊甸社會福利基金會的計畫申請審核，長期仰賴人工往返與紙本表單，資訊分散、進度難以追蹤。我以**第三方統籌角色**，協調系統開發商與基金會窗口，把會議紀錄與現場訪談轉譯成**兩份徵件流程泳道圖**，並主導**三次介面迭代**——統一登入邏輯、整併預算欄位、為不同補助類型新增客製欄位。系統以 **Ragic** 為底層架構、**Figma** 為介面雛型，預計 **2026 年 8 月正式上線**。",
+    desc: "伊甸社會福利基金會的計畫申請審核，長期仰賴人工往返與紙本表單，資訊分散、進度難以追蹤。我以**第三方統籌角色**，協調系統開發商與基金會窗口，把會議紀錄與現場訪談轉譯成**兩份徵件流程泳道圖**，並主導**三次介面迭代**——統一登入邏輯、整併預算欄位、為不同補助類型新增客製欄位。系統以 **Ragic** 為底層架構、**Figma** 為介面雛型，**2026 年 9 月正式上線**。",
     tags: ["流程泳道圖", "Ragic 系統", "Figma Wireframe", "三次迭代設計"],
     facts: [
       ["Role", "流程統籌／介面規劃"],
       ["Stack", "Ragic · Figma"],
-      ["Status", "2026.08 預計上線"],
+      ["Status", "2026.09 上線"],
     ],
     galleries: [
       {
@@ -966,11 +914,10 @@ const CASES = [
   },
   {
     id: "dashuigou",
+    heroImg: "images/wanhua-after-3.jpg", heroPos: "50% 42%",
     code: "NO. DASHUIGOU—02 · 2024",
     cardCode: "NO. DASHUIGOU—02",
     cardName: "大水溝\n二手屋場域改造",
-    cardMore: "場域改造規劃",
-    cardDate: "2024.08 – 2024.12",
     title: "大水溝二手屋\n場域改造",
     desc: "萬華大水溝二手屋，是我於台灣設計研究院推動循環經濟示範計畫中，數據最完整的一個場域案例。透過問卷調查、實地行為觀察與深度訪談，我精準定位出**「入口暗淡、指示不清」是核心流失痛點**，並據此主導**空間動線與陳列邏輯的重新設計**，產出一份可複製到其他二手服務空間的**設計指引文件**。改造後三個月的追蹤數據顯示：**顧客滿意度達 95%**，**新客佔比提升至 62%**，**月均到店人次由 900 人成長到 1,350 人**。",
     tags: ["空間動線設計", "顧客旅程地圖", "設計指引文件", "前後數據追蹤"],
@@ -1003,11 +950,10 @@ const CASES = [
   },
   {
     id: "tzuchi",
+    heroImg: "images/hero-tzuchi.jpg", heroPos: "50% 55%",
     code: "NO. TZUCHI—03 · 2024–2026",
     cardCode: "NO. TZUCHI—03",
     cardName: "慈濟基金會\n雙據點惜福屋",
-    cardMore: "跨據點服務設計",
-    cardDate: "2024.08 – 2026.02",
     badge: {"type": "award", "text": "🏆 2026 金點設計獎"},
     title: "同一個品牌，\n兩種挑戰",
     desc: "同一個慈濟品牌，北部的中山八德惜福屋與南部的鳳山工坊，面對截然不同的挑戰——前者需要優化既有人流動線，後者要從零建立服務模式。我分別為兩個據點設計對應的服務策略，北部據點導入**人流追蹤機制**驗證動線改善成效，上線一週內獲得**超過 20 則媒體報導**，**觸及人次突破 1,000**；南部鳳山工坊的服務設計成果，也於 2026 年**榮獲金點設計獎**肯定。",
@@ -1039,11 +985,10 @@ const CASES = [
   },
   {
     id: "zerozero",
+    heroImg: "images/hero-zerozero.jpg", heroPos: "50% 50%",
     code: "NO. ZEROZERO—04 · 2025–2026",
     cardCode: "NO. ZEROZERO—04",
     cardName: "大豐環保科技\nzero zero 商城",
-    cardMore: "電商產品規劃",
-    cardDate: "2025.08 – 2026.02",
     badge: {"type": "live", "text": "LIVE · 上線營運中"},
     title: "大豐環保科技\nzero zero O2O商城",
     desc: "在五個案例中，zero zero 是唯一從研究走進電商前台的作品。大豐環保科技希望把傳統回收站轉型為具備數位流通與社群連結能力的循環基地，我參與線上商城 zero zero 的產品規劃與服務設計，透過**顧客旅程共創工作坊**，串接線上下單與線下據點取貨的 **O2O 體驗**，逐步解決資訊不透明、場域負面印象與人力依賴等痛點，並規劃導入**AI 自動化上架**功能，打造可規模複製的數位商城與實體營運雙軌模式，朝**零廢棄、零污染**的資源循環目標邁進。商城目前正式上線營運中。",
@@ -1057,11 +1002,10 @@ const CASES = [
   },
   {
     id: "lightitup",
+    heroImg: "images/lightup-2.jpg", heroPos: "58% 50%",
     code: "NO. LIGHTUP—05 · 2024",
     cardCode: "NO. LIGHTUP—05",
     cardName: "光的再造\nLIGHT IT UP",
-    cardMore: "商業模式研究",
-    cardDate: "2024.08 – 2024.12",
     title: "光的再造\nLIGHT IT UP",
     desc: "「光的再造」是與恆隆行（Dyson 台灣代理商）旗下、主打循環永續的子品牌 **restyle2050** 合作，探索報廢吸塵器再生可行性的前導研究。**模組化組裝系統**由合作夥伴單挑概念工作室設計，讓報廢機身能重新拆解、組合成獨一無二的燈具；我與單挑運用**服務藍圖**，梳理會員與品牌之間的深層連結，共同負責**商業模式研究與工作坊設計**，邀請一般大眾親自動手參與、創作屬於自己的燈飾。這些燈具目前作為**會員回饋贈品**小規模試行，驗證商業模式可行性，為後續是否擴大投入正式營運提供決策依據。",
     tags: ["商業模式研究", "工作坊設計", "可行性驗證"],
@@ -1127,15 +1071,66 @@ function caseHTML(c, i){
     </div>
   </article>`;
 }
-document.getElementById('heroStack').innerHTML = CASES.map(c => `
-        <a class="stack-card" href="#case-${c.id}">
-          <span class="stack-card-inner">
-            <span class="stack-code">${c.cardCode}</span>
-            <span class="stack-name">${nl(c.cardName)}</span>
-            <span class="stack-more">${c.cardMore} →</span>
-            <span class="stack-date">${c.cardDate}</span>
-          </span>
-        </a>`).join('');
+(function(){
+  const view = document.getElementById('heroView');
+  const nameOf = c => c.cardName.replace('\n', ' ');
+  const shortOf = c => c.cardName.split('\n')[0];
+  const noOf = c => (c.cardCode.match(/(\d+)\s*$/) || ['', ''])[1];
+  view.innerHTML = `
+    <div class="hv-wrap">
+      <span class="hv-tick tl"></span><span class="hv-tick bl"></span><span class="hv-tick br"></span>
+      <a class="hv-frame" id="hvFrame" href="#case-${CASES[0].id}">
+        <div class="hv-inner">
+          ${CASES.map((c, i) => c.heroMock
+            ? `<div class="hv-img hv-mock${i === 0 ? ' on' : ''}" role="img" aria-label="${nameOf(c)}">` +
+              `<img class="hv-sheet back" src="${c.heroMock[0]}" alt=""><img class="hv-sheet front" src="${c.heroMock[1]}" alt=""></div>`
+            : `<img class="hv-img${i === 0 ? ' on' : ''}" src="${c.heroImg}" alt="${nameOf(c)}" style="--pos:${c.heroPos || '50% 50%'}">`).join('')}
+          <div class="hv-cap">
+            <div><span class="hv-cap-code" id="hvCode"></span><span class="hv-cap-name" id="hvName"></span></div>
+            <span class="hv-cap-go">查看案例 ↗</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="hv-tabs">
+      ${CASES.map((c, i) => `<button type="button" class="hv-tab${i === 0 ? ' on' : ''}"><i></i><b>${noOf(c)}</b><span>${shortOf(c)}</span></button>`).join('')}
+    </div>`;
+  const frame = view.querySelector('#hvFrame');
+  const imgs = [...view.querySelectorAll('.hv-img')];
+  const tabs = [...view.querySelectorAll('.hv-tab')];
+  const code = view.querySelector('#hvCode'), name = view.querySelector('#hvName');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const INTERVAL = 4800;
+  let cur = 0, timer = null;
+  function show(i){
+    cur = i;
+    imgs.forEach((im, k) => im.classList.toggle('on', k === i));
+    tabs.forEach((t, k) => {
+      t.classList.toggle('on', k === i);
+      if (k === i){ t.classList.remove('on'); void t.offsetWidth; t.classList.add('on'); } // restart progress line
+    });
+    frame.href = '#case-' + CASES[i].id;
+    code.textContent = CASES[i].code.split(' · ')[0];
+    name.textContent = nameOf(CASES[i]);
+  }
+  function stop(){ clearInterval(timer); timer = null; view.classList.add('paused'); }
+  function start(){
+    clearInterval(timer);
+    view.classList.remove('paused');
+    show(cur);
+    if (!reduce) timer = setInterval(() => show((cur + 1) % CASES.length), INTERVAL);
+    else view.classList.add('paused');
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('mouseenter', () => { stop(); show(i); view.classList.add('paused'); });
+    t.addEventListener('focus', () => { stop(); show(i); });
+    t.addEventListener('click', () => { window.location.hash = 'case-' + CASES[i].id; });
+  });
+  view.addEventListener('mouseenter', stop);
+  view.addEventListener('mouseleave', start);
+  view.addEventListener('focusout', e => { if (!view.contains(e.relatedTarget)) start(); });
+  start();
+})();
 document.getElementById('cases').innerHTML = CASES.map(caseHTML).join('');
 
 // Theme toggle (light default; choice remembered in this browser)
@@ -1242,23 +1237,7 @@ lightbox.addEventListener('wheel', (e) => {
   setTimeout(() => { lbWheelLock = false; }, 220);
 }, { passive: false });
 
-// Align hero hint text to the true center of the middle (Tzuchi) card
-function alignStackHint(){
-  const wrap = document.querySelector('.sheet-stack-wrap');
-  const hint = document.querySelector('.stack-hint');
-  if (!wrap || !hint) return;
-  if (window.innerWidth <= 560) { hint.style.left = ''; return; }
-  const cards = wrap.querySelectorAll('.stack-card');
-  const anchor = cards[2]; // Tzuchi, 3rd card
-  if (!anchor) return;
-  const wrapRect = wrap.getBoundingClientRect();
-  const cardRect = anchor.getBoundingClientRect();
-  const centerX = (cardRect.left + cardRect.width / 2) - wrapRect.left;
-  hint.style.left = centerX + 'px';
-}
-window.addEventListener('load', alignStackHint);
-window.addEventListener('resize', alignStackHint);
-alignStackHint();
+
 </script>
 </body>
 </html>
