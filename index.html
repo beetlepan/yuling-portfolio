@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-theme="light">
 <head>
+<script>(function(){var t="light";try{var s=localStorage.getItem("yp-theme");if(s==="dark"||s==="light")t=s;}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>潘昱霖 Yuling Pan — UX研究員 / 專案經理 作品集</title>
@@ -37,8 +38,8 @@
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; }
 body{
-  background: var(--paper-warm);
-  color: var(--ink);
+  background: var(--navy-deep);
+  color: var(--paper-warm);
   font-family: var(--font-body);
   font-size:16px;
   line-height:1.9;
@@ -64,7 +65,7 @@ svg{ display:block; max-width:100%; height:auto; }
   text-transform:uppercase;
   color:var(--ochre-bright);
 }
-.sheet--light .eyebrow{ color:var(--ochre); }
+:where(html[data-theme="light"]) .sheet .eyebrow{ color:var(--ochre); }
 .reveal{ opacity:0; transform:translateY(28px); transition:opacity 0.8s ease, transform 0.8s ease; }
 .reveal.is-visible{ opacity:1; transform:translateY(0); }
 
@@ -75,14 +76,14 @@ svg{ display:block; max-width:100%; height:auto; }
     radial-gradient(var(--line-on-navy) 1px, transparent 1px);
   background-size:28px 28px;
 }
-.grid-paper{
-  background-color:var(--paper-warm);
+.grid-navy-deep{
+  background-color:var(--navy-deep);
   background-image:
-    radial-gradient(var(--line-on-paper) 1px, transparent 1px);
+    radial-gradient(var(--line-on-navy) 1px, transparent 1px);
   background-size:28px 28px;
 }
-.grid-stone{
-  background-color:var(--paper);
+.grid-paper{
+  background-color:var(--paper-warm);
   background-image:
     radial-gradient(var(--line-on-paper) 1px, transparent 1px);
   background-size:28px 28px;
@@ -93,10 +94,10 @@ svg{ display:block; max-width:100%; height:auto; }
   position:fixed; top:0; left:0; right:0; z-index:100;
   display:flex; align-items:center; justify-content:space-between;
   padding:18px var(--edge);
-  background:rgba(244,239,223,0.9);
+  background:rgba(11,27,40,0.88);
   backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line-on-paper);
-  color:var(--ink);
+  border-bottom:1px solid var(--line-on-navy);
+  color:var(--paper-warm);
 }
 .nav-mark{
   font-family:var(--font-mono);
@@ -106,59 +107,59 @@ svg{ display:block; max-width:100%; height:auto; }
 }
 .nav-mark .dot{
   width:8px; height:8px; border-radius:50%;
-  background:var(--ochre);
-  box-shadow:0 0 0 3px rgba(184,132,43,0.18);
+  background:var(--ochre-bright);
+  box-shadow:0 0 0 3px rgba(214,160,63,0.2);
 }
 .nav-links{ display:flex; gap:32px; }
 .nav-links a{
   font-family:var(--font-mono);
   font-size:12.5px; letter-spacing:0.08em;
-  color:rgba(23,33,28,0.65);
+  color:rgba(244,239,223,0.72);
   position:relative;
   padding-bottom:3px;
   transition:color 0.25s ease;
 }
 .nav-links a::after{
   content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
-  background:var(--ochre); transition:width 0.3s ease;
+  background:var(--cyan); transition:width 0.3s ease;
 }
-.nav-links a:hover, .nav-links a.active{ color:var(--ink); }
+.nav-links a:hover, .nav-links a.active{ color:var(--paper-warm); }
 .nav-links a:hover::after, .nav-links a.active::after{ width:100%; }
-.nav-links a.theme-toggle-link{
-  border:1px solid var(--line-on-paper);
+.nav-links .theme-toggle-link{
+  border:1px solid var(--line-on-navy);
   border-radius:20px;
   padding:5px 14px 6px;
 }
-.nav-links a.theme-toggle-link::after{ display:none; }
-.nav-links a.theme-toggle-link:hover{ border-color:var(--ink); }
-.nav-toggle{ display:none; color:var(--ink); font-size:22px; }
+.nav-links .theme-toggle-link::after{ display:none; }
+.nav-links .theme-toggle-link:hover{ border-color:var(--paper-warm); }
+.nav-toggle{ display:none; color:var(--paper-warm); font-size:22px; }
 
 @media (max-width:760px){
   .nav-links{
     position:fixed; top:58px; left:0; right:0;
     flex-direction:column; gap:0;
-    background:var(--paper-warm);
+    background:var(--navy-deep);
     max-height:0; overflow:hidden;
     transition:max-height 0.35s ease;
-    border-bottom:1px solid var(--line-on-paper);
+    border-bottom:1px solid var(--line-on-navy);
   }
   .nav-links.open{ max-height:280px; }
-  .nav-links a{ padding:16px var(--edge); border-top:1px solid var(--line-on-paper); }
+  .nav-links a{ padding:16px var(--edge); border-top:1px solid var(--line-on-navy); }
   .nav-toggle{ display:block; }
 }
 
 /* ===================== HERO ===================== */
 .hero{
   min-height:100svh;
-  color:var(--ink);
+  color:var(--paper-warm);
   position:relative;
   display:flex; flex-direction:column; justify-content:center;
   padding:120px var(--edge) 64px;
 }
 .hero-ruler{
   position:absolute; top:0; bottom:0; left:20px; width:1px;
-  background:repeating-linear-gradient(to bottom, var(--line-on-paper) 0 1px, transparent 1px 12px);
-  opacity:0.8;
+  background:repeating-linear-gradient(to bottom, var(--line-on-navy) 0 1px, transparent 1px 12px);
+  opacity:0.6;
 }
 .hero-ruler.right{ left:auto; right:20px; }
 @media (max-width:760px){ .hero-ruler{ display:none; } }
@@ -178,24 +179,24 @@ svg{ display:block; max-width:100%; height:auto; }
 
 .hero-eyebrow{
   font-family:var(--font-mono); font-size:13px; letter-spacing:0.2em;
-  color:var(--cyan-dim); text-transform:uppercase; margin-bottom:22px;
+  color:var(--cyan); text-transform:uppercase; margin-bottom:22px;
   display:flex; align-items:center; gap:10px;
 }
-.hero-eyebrow::before{ content:''; width:24px; height:1px; background:var(--cyan-dim); }
+.hero-eyebrow::before{ content:''; width:24px; height:1px; background:var(--cyan); }
 
 .hero h1{
   font-size:clamp(34px, 5.4vw, 62px);
   letter-spacing:-0.01em;
-  color:var(--navy);
+  color:#fff;
   margin-bottom:26px;
 }
-.hero h1 .accent{ color:var(--ochre); }
+.hero h1 .accent{ color:var(--ochre-bright); }
 
 .hero p.lede{
   font-family:var(--font-body);
   font-size:clamp(15px,1.6vw,17.5px);
   line-height:1.95;
-  color:var(--ink-soft);
+  color:rgba(244,239,223,0.82);
   max-width:52ch;
   margin-bottom:36px;
   text-align:justify;
@@ -203,7 +204,7 @@ svg{ display:block; max-width:100%; height:auto; }
 
 .hero-stats{
   display:flex; flex-wrap:wrap; gap:0;
-  border-top:1px solid var(--line-on-paper);
+  border-top:1px solid var(--line-on-navy);
 }
 .hero-stat{
   padding:16px 26px 0 0;
@@ -212,12 +213,12 @@ svg{ display:block; max-width:100%; height:auto; }
 }
 .hero-stat .num{
   font-family:var(--font-display); font-weight:700;
-  font-size:26px; color:var(--navy);
+  font-size:26px; color:var(--paper-warm);
 }
-.hero-stat .num span{ color:var(--ochre); }
+.hero-stat .num span{ color:var(--ochre-bright); }
 .hero-stat .label{
   font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em;
-  color:rgba(23,33,28,0.55); margin-top:4px;
+  color:rgba(244,239,223,0.55); margin-top:4px;
 }
 
 /* Signature: stacked blueprint-sheet cards */
@@ -242,40 +243,50 @@ svg{ display:block; max-width:100%; height:auto; }
 .stack-card:first-child{ margin-left:0; }
 .stack-card-inner{
   position:absolute; inset:0;
-  border:1px solid var(--cyan-dim);
+  border:1px solid var(--cyan);
   clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
   padding:16px 18px;
   display:flex; flex-direction:column; justify-content:flex-start;
   transition:border-color 0.3s ease;
 }
-/* Left-to-right fade: solid cream card dissolving toward the page, outline stays readable */
-.stack-card{ color:var(--navy); }
-.stack-card:nth-child(1) .stack-card-inner{ background:#E0E6E8; border-color:transparent; }
-.stack-card:nth-child(2) .stack-card-inner{ background:#ACB6BC; border-color:transparent; }
-.stack-card:nth-child(3) .stack-card-inner{ background:#798791; border-color:transparent; }
-.stack-card:nth-child(4) .stack-card-inner{ background:#465866; border-color:transparent; }
-.stack-card:nth-child(5) .stack-card-inner{ background:var(--navy); border-color:transparent; }
-.stack-card:nth-child(1), .stack-card:nth-child(2){ color:var(--navy); }
+/* Right-to-left gradient: navy blueprint fading to warm cream */
+.stack-card:nth-child(1){ color:var(--navy); }
+.stack-card:nth-child(1) .stack-card-inner{ background:#F4EFE3; border-color:rgba(18,40,58,0.35); }
+.stack-card:nth-child(2){ color:var(--navy); }
+.stack-card:nth-child(2) .stack-card-inner{ background:#BCBDB9; border-color:rgba(18,40,58,0.4); }
 .stack-card:nth-child(3){ color:#243A49; }
-.stack-card:nth-child(4), .stack-card:nth-child(5){ color:var(--paper-warm); }
-.stack-card:nth-child(1) .stack-code, .stack-card:nth-child(2) .stack-code{ color:var(--navy); opacity:0.7; }
+.stack-card:nth-child(3) .stack-card-inner{ background:#838C8E; border-color:rgba(18,40,58,0.45); }
+.stack-card:nth-child(4){ color:var(--paper-warm); }
+.stack-card:nth-child(4) .stack-card-inner{ background:#4A5A64; border-color:var(--cyan-dim); }
+.stack-card:nth-child(5){ color:var(--paper-warm); position:relative; }
+.stack-card:nth-child(5) .stack-card-inner{ background:var(--navy); border:none; }
+.stack-card:nth-child(5){ filter:drop-shadow(0 3px 10px rgba(0,0,0,0.4)); }
+.stack-card:nth-child(5)::before{
+  content:'';
+  position:absolute; inset:-1px;
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 0 100%);
+  background:var(--cyan);
+  z-index:-1;
+}
+.stack-card:nth-child(1) .stack-code, .stack-card:nth-child(2) .stack-code{ color:var(--navy); opacity:0.65; }
 .stack-card:nth-child(3) .stack-code{ color:#243A49; opacity:0.85; }
 .stack-card:nth-child(4) .stack-code, .stack-card:nth-child(5) .stack-code{ color:var(--cyan); opacity:0.85; }
+.stack-card:nth-child(1) .stack-more, .stack-card:nth-child(2) .stack-more, .stack-card:nth-child(3) .stack-more{ color:var(--ochre); }
+.stack-card:nth-child(4) .stack-more, .stack-card:nth-child(5) .stack-more{ color:var(--ochre-bright); }
 .stack-card:nth-child(1) .stack-date, .stack-card:nth-child(2) .stack-date{ color:var(--navy); opacity:0.5; }
 .stack-card:nth-child(3) .stack-date{ color:#243A49; opacity:0.7; }
-.stack-card:nth-child(4) .stack-date, .stack-card:nth-child(5) .stack-date{ color:var(--paper-warm); opacity:0.45; }
-.stack-card:nth-child(4) .stack-more, .stack-card:nth-child(5) .stack-more{ color:var(--ochre-bright); }
+.stack-card:nth-child(4) .stack-date, .stack-card:nth-child(5) .stack-date{ color:var(--paper-warm); opacity:0.4; }
 .stack-card:hover, .stack-card:focus-visible{
   transform:translateY(-18px) rotate(-15deg);
   z-index:10;
   filter:
-    drop-shadow(0 16px 22px rgba(18,42,60,0.3))
-    drop-shadow(0 0 24px rgba(184,132,43,0.5))
-    drop-shadow(0 0 48px rgba(184,132,43,0.25));
+    drop-shadow(0 16px 22px rgba(0,0,0,0.4))
+    drop-shadow(0 0 26px rgba(214,160,63,0.55))
+    drop-shadow(0 0 52px rgba(214,160,63,0.3));
 }
 .stack-code{
   font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em;
-  color:var(--navy); opacity:0.75;
+  color:var(--cyan); opacity:0.85;
 }
 .stack-name{
   font-family:var(--font-display); font-size:17px; font-weight:600;
@@ -283,7 +294,7 @@ svg{ display:block; max-width:100%; height:auto; }
 }
 .stack-more{
   font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.03em;
-  color:var(--ochre);
+  color:var(--ochre-bright);
   opacity:0; max-height:0; overflow:hidden; margin-top:10px;
   transition:opacity 0.3s ease 0.08s;
 }
@@ -291,11 +302,11 @@ svg{ display:block; max-width:100%; height:auto; }
 .stack-date{
   position:absolute; right:16px; bottom:12px;
   font-family:var(--font-mono); font-size:9px; letter-spacing:0.02em;
-  color:var(--navy); opacity:0.55;
+  color:var(--paper-warm); opacity:0.4;
 }
 .stack-hint{
   font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.06em;
-  color:var(--ink-soft); opacity:0.7;
+  color:rgba(244,239,223,0.45);
   position:absolute; left:50%; top:100%; margin-top:24px; transform:translateX(-50%);
   white-space:nowrap;
 }
@@ -332,7 +343,7 @@ svg{ display:block; max-width:100%; height:auto; }
 .section-wrap{ padding:112px 0; }
 
 /* ===================== ABOUT ===================== */
-.about{ color:var(--ink); }
+.about{ color:var(--paper-warm); }
 .about-grid{
   max-width:1280px; margin:0 auto; padding:0 var(--edge);
   display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start;
@@ -343,51 +354,49 @@ svg{ display:block; max-width:100%; height:auto; }
 .about-title h2{
   font-family:var(--font-display); font-weight:700;
   font-size:clamp(26px, 3.4vw, 38px);
-  margin-top:14px; color:var(--ink);
+  margin-top:14px; color:var(--paper-warm);
 }
-
-.about-body p{ font-size:16px; color:var(--ink-soft); max-width:56ch; margin-bottom:18px; text-align:justify; }
+.about-body p{ font-size:16px; color:rgba(244,239,223,0.8); max-width:56ch; margin-bottom:18px; text-align:justify; }
 .hl{ font-weight:700; color:var(--ochre-bright); }
-.about-body .hl{ color:var(--ochre); }
-.sheet--light .hl{ color:var(--ochre); }
-.footer--light .hl{ color:var(--ochre); }
+:where(html[data-theme="light"]) .sheet .hl{ color:var(--ochre); }
+:where(html[data-theme="light"]) .footer .hl{ color:var(--ochre); }
 .about-body p:last-child{ margin-bottom:0; }
 
 .legend-box{
-  border:1px solid var(--line-on-paper);
+  border:1px solid var(--line-on-navy);
   padding:26px 28px;
 }
 .legend-title{
   font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.12em;
-  text-transform:uppercase; color:var(--ochre); margin-bottom:18px;
-  display:flex; justify-content:space-between; border-bottom:1px dashed var(--line-on-paper); padding-bottom:12px;
+  text-transform:uppercase; color:var(--ochre-bright); margin-bottom:18px;
+  display:flex; justify-content:space-between; border-bottom:1px dashed var(--line-on-navy); padding-bottom:12px;
 }
 .legend-list{ display:flex; flex-direction:column; gap:0; }
 .legend-list li{
   display:flex; align-items:center; gap:12px;
-  padding:9px 0; border-bottom:1px solid var(--line-on-paper);
+  padding:9px 0; border-bottom:1px solid var(--line-on-navy);
   font-family:var(--font-mono); font-size:13px; letter-spacing:0.02em;
-  color:var(--ink);
+  color:var(--paper-warm);
 }
 .legend-list li:last-child{ border-bottom:none; }
-.legend-list .mark{ width:9px; height:9px; border:1.4px solid var(--navy); flex-shrink:0; }
+.legend-list .mark{ width:9px; height:9px; border:1.4px solid var(--cyan); flex-shrink:0; }
 .legend-list .mark.dot{ border-radius:50%; }
-.legend-list .mark.tri{ border:none; width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-bottom:9px solid var(--navy); }
+.legend-list .mark.tri{ border:none; width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-bottom:9px solid var(--cyan); }
 
 .credentials{ margin-top:28px; }
 .credentials .row{
   display:flex; justify-content:space-between; gap:16px;
-  padding:12px 0; border-top:1px solid var(--line-on-paper);
-  font-size:13.5px; color:var(--ink-soft);
+  padding:12px 0; border-top:1px solid var(--line-on-navy);
+  font-size:13.5px; color:rgba(244,239,223,0.8);
 }
 .credentials .row span:first-child{ min-width:0; }
-.credentials .row .tag{ font-family:var(--font-mono); font-size:11px; color:var(--ochre); white-space:nowrap; padding-top:2px;}
+.credentials .row .tag{ font-family:var(--font-mono); font-size:11px; color:var(--ochre-bright); white-space:nowrap; padding-top:2px;}
 
 /* ===================== WORK / SHEETS ===================== */
 .work-intro{ padding:0 var(--edge); max-width:1280px; margin:0 auto 24px; }
 .work-transition{
   height:64px;
-  background:linear-gradient(to bottom, var(--paper), var(--paper-warm));
+  background:linear-gradient(to bottom, var(--navy), var(--navy-deep));
 }
 
 .sheet{
@@ -407,19 +416,19 @@ svg{ display:block; max-width:100%; height:auto; }
   .sheet:nth-of-type(odd) .sheet-text, .sheet:nth-of-type(odd) .sheet-visual{ order:0; }
 }
 
-.sheet--dark{ color:var(--paper-warm); }
-.sheet--dark .sheet-desc{ color:rgba(244,239,223,0.8); }
-.sheet--dark .titleblock{ border-color:var(--line-on-navy); }
-.sheet--dark .titleblock .k{ color:rgba(244,239,223,0.5); }
-.sheet--dark .tag-chip{ background:var(--navy); border-color:var(--cyan); color:var(--paper-warm); font-weight:700; }
-.sheet--dark .sheet-code{ color:var(--cyan); }
+:where(html[data-theme="dark"]) .sheet{ color:var(--paper-warm); }
+:where(html[data-theme="dark"]) .sheet .sheet-desc{ color:rgba(244,239,223,0.8); }
+:where(html[data-theme="dark"]) .sheet .titleblock{ border-color:var(--line-on-navy); }
+:where(html[data-theme="dark"]) .sheet .titleblock .k{ color:rgba(244,239,223,0.5); }
+:where(html[data-theme="dark"]) .sheet .tag-chip{ background:var(--navy); border-color:var(--cyan); color:var(--paper-warm); font-weight:700; }
+:where(html[data-theme="dark"]) .sheet .sheet-code{ color:var(--cyan); }
 
-.sheet--light{ color:var(--ink); }
-.sheet--light .sheet-desc{ color:var(--ink-soft); }
-.sheet--light .titleblock{ border-color:var(--line-on-paper); }
-.sheet--light .titleblock .k{ color:var(--ink-soft); opacity:0.7; }
-.sheet--light .tag-chip{ background:var(--navy); border-color:var(--navy); color:var(--paper-warm); font-weight:700; }
-.sheet--light .sheet-code{ color:var(--navy); }
+:where(html[data-theme="light"]) .sheet{ color:var(--ink); }
+:where(html[data-theme="light"]) .sheet .sheet-desc{ color:var(--ink-soft); }
+:where(html[data-theme="light"]) .sheet .titleblock{ border-color:var(--line-on-paper); }
+:where(html[data-theme="light"]) .sheet .titleblock .k{ color:var(--ink-soft); opacity:0.7; }
+:where(html[data-theme="light"]) .sheet .tag-chip{ background:var(--navy); border-color:var(--navy); color:var(--paper-warm); font-weight:700; }
+:where(html[data-theme="light"]) .sheet .sheet-code{ color:var(--navy); }
 
 .sheet-code{
   font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.14em;
@@ -448,7 +457,8 @@ svg{ display:block; max-width:100%; height:auto; }
   border:1px solid var(--line-on-navy);
   padding:22px;
 }
-.sheet--light .sheet-visual{ border-color:var(--line-on-paper); color:var(--navy); }
+:where(html[data-theme="light"]) .sheet .sheet-visual{ border-color:var(--line-on-paper); }
+.sheet-visual svg text:not([fill]){ fill:currentColor; }
 
 .photo-slot{
   margin-top:16px;
@@ -458,7 +468,7 @@ svg{ display:block; max-width:100%; height:auto; }
   font-family:var(--font-mono); font-size:11px; letter-spacing:0.02em;
   color:rgba(244,239,223,0.55);
 }
-.sheet--light .photo-slot{ border-color:var(--line-on-paper); color:var(--ink-soft); }
+:where(html[data-theme="light"]) .sheet .photo-slot{ border-color:var(--line-on-paper); color:var(--ink-soft); }
 .photo-slot .icon{ font-size:16px; flex-shrink:0; }
 
 .live-badge{
@@ -466,13 +476,13 @@ svg{ display:block; max-width:100%; height:auto; }
   font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em;
   color:var(--ochre-bright); margin-bottom:16px;
 }
-.sheet--light .live-badge{ color:var(--ochre); }
+:where(html[data-theme="light"]) .sheet .live-badge{ color:var(--ochre); }
 .award-badge{
   display:inline-flex; align-items:center; gap:7px;
   font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em;
   color:var(--ochre-bright); margin-bottom:16px;
 }
-.sheet--light .award-badge{ color:var(--ochre); }
+:where(html[data-theme="light"]) .sheet .award-badge{ color:var(--ochre); }
 .live-badge .pulse{
   width:7px; height:7px; border-radius:50%; background:currentColor;
   animation:pulse 1.8s ease-in-out infinite;
@@ -588,13 +598,99 @@ svg{ display:block; max-width:100%; height:auto; }
   text-transform:uppercase; opacity:0.55; display:block; margin-top:8px;
 }
 
-/* ===================== FOOTER — LIGHT VARIANT ===================== */
-.footer--light{ color:var(--ink); }
-.footer--light .eyebrow{ color:var(--ochre); }
-.footer--light p.lede{ color:var(--ink-soft); }
-.footer--light .contact-links a{ border-bottom-color:var(--line-on-paper); }
-.footer--light .contact-links a:hover{ border-color:var(--ochre); color:var(--ochre); }
-.footer--light .titleblock-footer{ border-top-color:var(--line-on-paper); color:rgba(23,33,28,0.42); }
+/* ===================== THEME TOGGLE (in-page) + shared helpers ===================== */
+:root{ --accent-ochre: var(--ochre-bright); }
+html[data-theme="light"]{ --accent-ochre: var(--ochre); }
+.oc-s{ stroke:var(--accent-ochre); }
+.oc-f{ fill:var(--accent-ochre); }
+.nav-links button.theme-toggle-link{
+  font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.08em;
+  color:rgba(244,239,223,0.72); background:none; cursor:pointer; line-height:inherit; margin:0; appearance:none; -webkit-appearance:none; text-align:center;
+  transition:color 0.25s ease, border-color 0.25s ease;
+}
+.nav-links button.theme-toggle-link:hover{ color:var(--paper-warm); }
+.work-intro .eyebrow{ color:var(--ochre-bright); }
+.work-intro h2{ color:var(--paper-warm); }
+
+/* ===================== LIGHT THEME OVERRIDES (auto-merged from light version) ===================== */
+  :where(html[data-theme="light"]) body{ background: var(--paper-warm); color: var(--ink); }
+  :where(html[data-theme="light"]) .site-nav{ background:rgba(244,239,223,0.9); border-bottom:1px solid var(--line-on-paper); color:var(--ink); }
+  :where(html[data-theme="light"]) .nav-mark .dot{ background:var(--ochre); box-shadow:0 0 0 3px rgba(184,132,43,0.18); }
+  :where(html[data-theme="light"]) .nav-links a{ color:rgba(23,33,28,0.65); }
+  :where(html[data-theme="light"]) .nav-links a::after{ background:var(--ochre); }
+  :where(html[data-theme="light"]) .nav-links a:hover, :where(html[data-theme="light"]) .nav-links a.active{ color:var(--ink); }
+  :where(html[data-theme="light"]) .nav-links .theme-toggle-link{ border:1px solid var(--line-on-paper); }
+  :where(html[data-theme="light"]) .nav-links .theme-toggle-link:hover{ border-color:var(--ink); }
+  :where(html[data-theme="light"]) .nav-toggle{ color:var(--ink); }
+@media (max-width:760px){
+  :where(html[data-theme="light"]) .nav-links{ background:var(--paper-warm); border-bottom:1px solid var(--line-on-paper); }
+  :where(html[data-theme="light"]) .nav-links a{ border-top:1px solid var(--line-on-paper); }
+}
+  :where(html[data-theme="light"]) .hero{ color:var(--ink); }
+  :where(html[data-theme="light"]) .hero-ruler{ background:repeating-linear-gradient(to bottom, var(--line-on-paper) 0 1px, transparent 1px 12px); opacity:0.8; }
+  :where(html[data-theme="light"]) .hero-eyebrow{ color:var(--cyan-dim); }
+  :where(html[data-theme="light"]) .hero-eyebrow::before{ background:var(--cyan-dim); }
+  :where(html[data-theme="light"]) .hero h1{ color:var(--navy); }
+  :where(html[data-theme="light"]) .hero h1 .accent{ color:var(--ochre); }
+  :where(html[data-theme="light"]) .hero p.lede{ color:var(--ink-soft); }
+  :where(html[data-theme="light"]) .hero-stats{ border-top:1px solid var(--line-on-paper); }
+  :where(html[data-theme="light"]) .hero-stat .num{ color:var(--navy); }
+  :where(html[data-theme="light"]) .hero-stat .num span{ color:var(--ochre); }
+  :where(html[data-theme="light"]) .hero-stat .label{ color:rgba(23,33,28,0.55); }
+  :where(html[data-theme="light"]) .stack-card-inner{ border:1px solid var(--cyan-dim); }
+  :where(html[data-theme="light"]) .stack-card{ color:var(--navy); }
+  :where(html[data-theme="light"]) .stack-card:nth-child(1) .stack-card-inner{ background:#E0E6E8; border-color:transparent; }
+  :where(html[data-theme="light"]) .stack-card:nth-child(2) .stack-card-inner{ background:#ACB6BC; border-color:transparent; }
+  :where(html[data-theme="light"]) .stack-card:nth-child(3) .stack-card-inner{ background:#798791; border-color:transparent; }
+  :where(html[data-theme="light"]) .stack-card:nth-child(4) .stack-card-inner{ background:#465866; border-color:transparent; }
+  :where(html[data-theme="light"]) .stack-card:nth-child(5) .stack-card-inner{ border-color:transparent; }
+  :where(html[data-theme="light"]) .stack-card:nth-child(1), :where(html[data-theme="light"]) .stack-card:nth-child(2){ color:var(--navy); }
+  :where(html[data-theme="light"]) .stack-card:nth-child(4), :where(html[data-theme="light"]) .stack-card:nth-child(5){ color:var(--paper-warm); }
+  :where(html[data-theme="light"]) .stack-card:nth-child(1) .stack-code, :where(html[data-theme="light"]) .stack-card:nth-child(2) .stack-code{ opacity:0.7; }
+  :where(html[data-theme="light"]) .stack-card:nth-child(4) .stack-date, :where(html[data-theme="light"]) .stack-card:nth-child(5) .stack-date{ opacity:0.45; }
+  :where(html[data-theme="light"]) .stack-card:hover, :where(html[data-theme="light"]) .stack-card:focus-visible{ filter: drop-shadow(0 16px 22px rgba(18,42,60,0.3)) drop-shadow(0 0 24px rgba(184,132,43,0.5)) drop-shadow(0 0 48px rgba(184,132,43,0.25)); }
+  :where(html[data-theme="light"]) .stack-code{ color:var(--navy); opacity:0.75; }
+  :where(html[data-theme="light"]) .stack-more{ color:var(--ochre); }
+  :where(html[data-theme="light"]) .stack-date{ color:var(--navy); opacity:0.55; }
+  :where(html[data-theme="light"]) .stack-hint{ color:var(--ink-soft); opacity:0.7; }
+@media (max-width:560px){
+  :where(html[data-theme="light"]) .stack-card{ margin-left:14px; scroll-snap-align:start; flex-shrink:0; }
+}
+  :where(html[data-theme="light"]) .about{ color:var(--ink); }
+  :where(html[data-theme="light"]) .about-title h2{ color:var(--ink); }
+  :where(html[data-theme="light"]) .about-body p{ color:var(--ink-soft); }
+  :where(html[data-theme="light"]) .about-body .hl{ color:var(--ochre); }
+  :where(html[data-theme="light"]) .legend-box{ border:1px solid var(--line-on-paper); }
+  :where(html[data-theme="light"]) .legend-title{ color:var(--ochre); border-bottom:1px dashed var(--line-on-paper); }
+  :where(html[data-theme="light"]) .legend-list li{ border-bottom:1px solid var(--line-on-paper); color:var(--ink); }
+  :where(html[data-theme="light"]) .legend-list .mark{ border:1.4px solid var(--navy); }
+  :where(html[data-theme="light"]) .legend-list .mark.tri{ border-bottom:9px solid var(--navy); }
+  :where(html[data-theme="light"]) .credentials .row{ border-top:1px solid var(--line-on-paper); color:var(--ink-soft); }
+  :where(html[data-theme="light"]) .credentials .row .tag{ color:var(--ochre); }
+  :where(html[data-theme="light"]) .work-transition{ background:linear-gradient(to bottom, var(--paper), var(--paper-warm)); }
+  :where(html[data-theme="light"]) .sheet .sheet-visual{ color:var(--navy); }
+  :where(html[data-theme="light"]) .footer{ color:var(--ink); }
+  :where(html[data-theme="light"]) .footer .eyebrow{ color:var(--ochre); }
+  :where(html[data-theme="light"]) .footer p.lede{ color:var(--ink-soft); }
+  :where(html[data-theme="light"]) .footer .contact-links a{ border-bottom-color:var(--line-on-paper); }
+  :where(html[data-theme="light"]) .footer .contact-links a:hover{ border-color:var(--ochre); color:var(--ochre); }
+  :where(html[data-theme="light"]) .footer .titleblock-footer{ border-top-color:var(--line-on-paper); color:rgba(23,33,28,0.42); }
+
+  /* light: section backgrounds (class names are theme-neutral: navy -> stone, navy-deep -> paper) */
+  :where(html[data-theme="light"]) .grid-navy{ background-color:var(--paper);
+    background-image:radial-gradient(var(--line-on-paper) 1px, transparent 1px); }
+  :where(html[data-theme="light"]) .grid-navy-deep{ background-color:var(--paper-warm);
+    background-image:radial-gradient(var(--line-on-paper) 1px, transparent 1px); }
+  /* light: hero card 5 has no border layer / shadow */
+  :where(html[data-theme="light"]) .stack-card:nth-child(5)::before{ display:none; }
+  :where(html[data-theme="light"]) .stack-card:nth-child(5):not(:hover){ filter:none; }
+  :where(html[data-theme="light"]) .stack-card:nth-child(5) .stack-card-inner{ border:1px solid transparent; }
+  :where(html[data-theme="light"]) .stack-card:nth-child(1) .stack-more, :where(html[data-theme="light"]) .stack-card:nth-child(2) .stack-more, :where(html[data-theme="light"]) .stack-card:nth-child(3) .stack-more{ color:var(--ochre); }
+
+  :where(html[data-theme="light"]) .nav-links button.theme-toggle-link{ color:rgba(23,33,28,0.65); }
+  :where(html[data-theme="light"]) .nav-links button.theme-toggle-link:hover{ color:var(--ink); }
+  :where(html[data-theme="light"]) .work-intro .eyebrow{ color:var(--ochre); }
+  :where(html[data-theme="light"]) .work-intro h2{ color:var(--ink); }
 </style>
 </head>
 <body>
@@ -606,13 +702,13 @@ svg{ display:block; max-width:100%; height:auto; }
     <li><a href="#work">Work</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="resume_2026.pdf" target="_blank" rel="noopener">完整履歷 ↗</a></li>
-    <li><a href="portfolio-dark.html" class="theme-toggle-link">🌙 深色模式</a></li>
+    <li><button type="button" class="theme-toggle-link" id="themeToggle">🌙 深色模式</button></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="開啟選單">☰</button>
 </nav>
 
 <!-- ===================== HERO ===================== -->
-<header class="hero grid-stone">
+<header class="hero grid-navy">
   <div class="hero-ruler"></div>
   <div class="hero-ruler right"></div>
   <div class="hero-inner">
@@ -628,48 +724,7 @@ svg{ display:block; max-width:100%; height:auto; }
     </div>
     <div class="hero-diagram">
       <div class="sheet-stack-wrap">
-      <div class="sheet-stack">
-        <a class="stack-card" href="#case-eden">
-          <span class="stack-card-inner">
-            <span class="stack-code">NO. EDEN—01</span>
-            <span class="stack-name">伊甸基金會<br>計畫徵件系統</span>
-            <span class="stack-more">流程統籌／介面規劃 →</span>
-            <span class="stack-date">2026.04 – 2026.05</span>
-          </span>
-        </a>
-        <a class="stack-card" href="#case-dashuigou">
-          <span class="stack-card-inner">
-            <span class="stack-code">NO. DASHUIGOU—02</span>
-            <span class="stack-name">大水溝<br>二手屋場域改造</span>
-            <span class="stack-more">場域改造規劃 →</span>
-            <span class="stack-date">2024.08 – 2024.12</span>
-          </span>
-        </a>
-        <a class="stack-card" href="#case-tzuchi">
-          <span class="stack-card-inner">
-            <span class="stack-code">NO. TZUCHI—03</span>
-            <span class="stack-name">慈濟基金會<br>雙據點惜福屋</span>
-            <span class="stack-more">跨據點服務設計 →</span>
-            <span class="stack-date">2024.08 – 2026.02</span>
-          </span>
-        </a>
-        <a class="stack-card" href="#case-zerozero">
-          <span class="stack-card-inner">
-            <span class="stack-code">NO. ZEROZERO—04</span>
-            <span class="stack-name">大豐環保科技<br>zero zero 商城</span>
-            <span class="stack-more">電商產品規劃 →</span>
-            <span class="stack-date">2025.08 – 2026.02</span>
-          </span>
-        </a>
-        <a class="stack-card" href="#case-lightitup">
-          <span class="stack-card-inner">
-            <span class="stack-code">NO. LIGHTUP—05</span>
-            <span class="stack-name">光的再造<br>LIGHT IT UP</span>
-            <span class="stack-more">商業模式研究 →</span>
-            <span class="stack-date">2024.08 – 2024.12</span>
-          </span>
-        </a>
-      </div>
+      <div class="sheet-stack" id="heroStack"></div>
       <div class="stack-hint">滑鼠移到圖紙預覽 · 點選查看案例 ↑</div>
       </div>
     </div>
@@ -678,7 +733,7 @@ svg{ display:block; max-width:100%; height:auto; }
 
 
 <!-- ===================== ABOUT ===================== -->
-<section id="about" class="about grid-paper section-wrap">
+<section id="about" class="about grid-navy-deep section-wrap">
   <div class="about-grid">
     <div class="about-left reveal">
       <div class="about-title">
@@ -713,70 +768,48 @@ svg{ display:block; max-width:100%; height:auto; }
 </section>
 
 <!-- ===================== WORK ===================== -->
-<section id="work" class="grid-stone">
+<section id="work" class="grid-navy">
   <div class="work-intro section-head reveal" style="margin-top:8px;">
-    <span class="eyebrow" style="color:var(--ochre)">02 — Selected Work</span>
-    <h2 style="color:var(--ink)">五份現場圖紙，五個還在運作的系統。</h2>
+    <span class="eyebrow">02 — Selected Work</span>
+    <h2>五份現場圖紙，五個還在運作的系統。</h2>
   </div>
 
   <div class="work-transition"></div>
 
-  <!-- CASE 1 — EDEN -->
-  <article class="sheet sheet--light grid-paper" id="case-eden">
-    <div class="sheet-inner">
-      <div class="sheet-text reveal">
-        <span class="sheet-code">NO. EDEN—01 · 2026</span>
-        <h3>伊甸基金會<br>計畫徵件系統</h3>
-        <p class="sheet-desc">伊甸社會福利基金會的計畫申請審核，長期仰賴人工往返與紙本表單，資訊分散、進度難以追蹤。我以<span class="hl">第三方統籌角色</span>，協調系統開發商與基金會窗口，把會議紀錄與現場訪談轉譯成<span class="hl">兩份徵件流程泳道圖</span>，並主導<span class="hl">三次介面迭代</span>——統一登入邏輯、整併預算欄位、為不同補助類型新增客製欄位。系統以 <span class="hl">Ragic</span> 為底層架構、<span class="hl">Figma</span> 為介面雛型，預計 <span class="hl">2026 年 8 月正式上線</span>。</p>
-        <div class="tag-row">
-          <span class="tag-chip">流程泳道圖</span>
-          <span class="tag-chip">Ragic 系統</span>
-          <span class="tag-chip">Figma Wireframe</span>
-          <span class="tag-chip">三次迭代設計</span>
-        </div>
-        <div class="titleblock">
-          <div><span class="k">Role</span><span class="v">流程統籌／介面規劃</span></div>
-          <div><span class="k">Stack</span><span class="v">Ragic · Figma</span></div>
-          <div><span class="k">Status</span><span class="v">2026.08 預計上線</span></div>
-        </div>
-      </div>
-      <div class="sheet-visual reveal">
-        <div class="doc-gallery">
-          <span class="doc-gallery-label">實際交付文件 · 點擊放大</span>
-          <div class="doc-grid">
-            <button type="button" class="thumb-btn" data-full="images/eden-collection-flow.png" data-caption="伊甸整體收件流程圖">
-              <img src="images/eden-collection-flow-thumb.png" alt="伊甸整體收件流程圖" loading="lazy">
-            </button>
-            <button type="button" class="thumb-btn" data-full="images/eden-ragic-flow.png" data-caption="Ragic 使用者流程圖">
-              <img src="images/eden-ragic-flow-thumb.png" alt="Ragic 使用者流程圖" loading="lazy">
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
+  <div id="cases"></div>
+</section>
 
-  <!-- CASE 2 — DASHUIGOU -->
-  <article class="sheet sheet--light grid-stone" id="case-dashuigou">
-    <div class="sheet-inner">
-      <div class="sheet-text reveal">
-        <span class="sheet-code">NO. DASHUIGOU—02 · 2024</span>
-        <h3>大水溝二手屋<br>場域改造</h3>
-        <p class="sheet-desc">萬華大水溝二手屋，是我於台灣設計研究院推動循環經濟示範計畫中，數據最完整的一個場域案例。透過問卷調查、實地行為觀察與深度訪談，我精準定位出<span class="hl">「入口暗淡、指示不清」是核心流失痛點</span>，並據此主導<span class="hl">空間動線與陳列邏輯的重新設計</span>，產出一份可複製到其他二手服務空間的<span class="hl">設計指引文件</span>。改造後三個月的追蹤數據顯示：<span class="hl">顧客滿意度達 95%</span>，<span class="hl">新客佔比提升至 62%</span>，<span class="hl">月均到店人次由 900 人成長到 1,350 人</span>。</p>
-        <div class="tag-row">
-          <span class="tag-chip">空間動線設計</span>
-          <span class="tag-chip">顧客旅程地圖</span>
-          <span class="tag-chip">設計指引文件</span>
-          <span class="tag-chip">前後數據追蹤</span>
-        </div>
-        <div class="titleblock">
-          <div><span class="k">Role</span><span class="v">場域改造規劃</span></div>
-          <div><span class="k">Partner</span><span class="v">玩美文創</span></div>
-          <div><span class="k">Status</span><span class="v">2024 完成 · 持續營運</span></div>
-        </div>
-      </div>
-      <div class="sheet-visual reveal">
-        <svg viewBox="0 0 480 195" width="100%">
+<!-- ===================== FOOTER / CONTACT ===================== -->
+<footer id="contact" class="footer grid-navy">
+  <div class="footer-inner reveal">
+    <span class="eyebrow">03 — Contact</span>
+    <h2>想聊聊<br>下一個案子嗎？</h2>
+    <p class="lede">目前正在尋找 UX 研究員 或 產品經理/專案經理 的下一個機會，歡迎透過以下方式與我聯繫，或先看看完整的履歷與更多案例。</p>
+    <div class="contact-links">
+      <a href="mailto:yulinpan0118@gmail.com">✉ yulinpan0118@gmail.com</a>
+      <a href="https://www.linkedin.com/in/ulinggggg/" target="_blank" rel="noopener">↗ LinkedIn</a>
+      <a href="https://uling.super.site/" target="_blank" rel="noopener">↗ 完整作品集（Notion）</a>
+    </div>
+  </div>
+  <div class="titleblock-footer">
+    <span>YULING PAN — PORTFOLIO</span>
+    <span>SHEET 01 OF 01</span>
+    <span>REV. 2026.08</span>
+    <span>SCALE N.T.S.</span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-hidden="true">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="關閉">✕</button>
+  <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="上一張">‹</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="下一張">›</button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<template id="vis-dashuigou">
+<svg viewBox="0 0 480 195" width="100%">
           <defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
           <g font-family="IBM Plex Mono" font-size="12.5" opacity="0.75">
             <text x="30" y="16">月均到店人次 MONTHLY VISITS</text>
@@ -797,56 +830,9 @@ svg{ display:block; max-width:100%; height:auto; }
           <text x="345" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" opacity="0.65">滿意度</text>
           <text x="345" y="178" text-anchor="middle" font-family="IBM Plex Mono" font-size="12">新客佔比 <tspan font-weight="700">62%</tspan></text>
         </svg>
-        <div class="doc-gallery">
-          <span class="doc-gallery-label">改造前後實景 · 點擊放大</span>
-          <div class="photo-cols">
-            <div>
-              <span class="photo-col-label">改造前 BEFORE</span>
-              <div class="photo-row">
-                <button type="button" class="thumb-btn" data-full="images/wanhua-before-1.jpg" data-caption="大水溝二手屋 · 改造前"><img src="images/wanhua-before-1-thumb.jpg" alt="大水溝二手屋改造前" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/wanhua-before-2.jpg" data-caption="大水溝二手屋 · 改造前"><img src="images/wanhua-before-2-thumb.jpg" alt="大水溝二手屋改造前" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/wanhua-before-3.jpg" data-caption="大水溝二手屋 · 改造前"><img src="images/wanhua-before-3-thumb.jpg" alt="大水溝二手屋改造前" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/wanhua-before-4.jpg" data-caption="大水溝二手屋 · 改造前"><img src="images/wanhua-before-4-thumb.jpg" alt="大水溝二手屋改造前" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/wanhua-before-5.jpg" data-caption="大水溝二手屋 · 改造前"><img src="images/wanhua-before-5-thumb.jpg" alt="大水溝二手屋改造前" loading="lazy"></button>
-              </div>
-            </div>
-            <div>
-              <span class="photo-col-label">改造後 AFTER</span>
-              <div class="photo-row">
-                <button type="button" class="thumb-btn" data-full="images/wanhua-after-1.jpg" data-caption="大水溝二手屋 · 改造後"><img src="images/wanhua-after-1-thumb.jpg" alt="大水溝二手屋改造後" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/wanhua-after-2.jpg" data-caption="大水溝二手屋 · 改造後"><img src="images/wanhua-after-2-thumb.jpg" alt="大水溝二手屋改造後" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/wanhua-after-3.jpg" data-caption="大水溝二手屋 · 改造後"><img src="images/wanhua-after-3-thumb.jpg" alt="大水溝二手屋改造後" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/wanhua-after-4.jpg" data-caption="大水溝二手屋 · 改造後"><img src="images/wanhua-after-4-thumb.jpg" alt="大水溝二手屋改造後" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/wanhua-after-5.jpg" data-caption="大水溝二手屋 · 改造後"><img src="images/wanhua-after-5-thumb.jpg" alt="大水溝二手屋改造後" loading="lazy"></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <!-- CASE 3 — TZUCHI -->
-  <article class="sheet sheet--light grid-paper" id="case-tzuchi">
-    <div class="sheet-inner">
-      <div class="sheet-text reveal">
-        <span class="award-badge">🏆 2026 金點設計獎</span>
-        <span class="sheet-code">NO. TZUCHI—03 · 2024–2026</span>
-        <h3>同一個品牌，<br>兩種挑戰</h3>
-        <p class="sheet-desc">同一個慈濟品牌，北部的中山八德惜福屋與南部的鳳山工坊，面對截然不同的挑戰——前者需要優化既有人流動線，後者要從零建立服務模式。我分別為兩個據點設計對應的服務策略，北部據點導入<span class="hl">人流追蹤機制</span>驗證動線改善成效，上線一週內獲得<span class="hl">超過 20 則媒體報導</span>，<span class="hl">觸及人次突破 1,000</span>；南部鳳山工坊的服務設計成果，也於 2026 年<span class="hl">榮獲金點設計獎</span>肯定。</p>
-        <div class="tag-row">
-          <span class="tag-chip">雙據點策略</span>
-          <span class="tag-chip">人流追蹤</span>
-          <span class="tag-chip">媒體聲量</span>
-        </div>
-        <div class="titleblock">
-          <div><span class="k">Role</span><span class="v">服務設計／跨據點協調</span></div>
-          <div><span class="k">Partner</span><span class="v">Atelier AGI<br>廢物救星</span></div>
-          <div><span class="k">Status</span><span class="v">北部 2024 完工<br>南部 2026 完工</span></div>
-        </div>
-      </div>
-      <div class="sheet-visual reveal">
-        <svg viewBox="0 0 480 190" width="100%">
+</template>
+<template id="vis-tzuchi">
+<svg viewBox="0 0 480 190" width="100%">
           <line x1="148" y1="67" x2="292" y2="113" stroke="currentColor" stroke-width="1.1" stroke-dasharray="2 6" opacity="0.55"/>
           <circle cx="110" cy="55" r="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
           <text x="110" y="54" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono" font-size="10.5">中山八德惜福屋</text>
@@ -860,55 +846,9 @@ svg{ display:block; max-width:100%; height:auto; }
           <text x="247" y="47" font-family="IBM Plex Mono" font-size="13" font-weight="500">1,000+ 觸及人次</text>
           <text x="20" y="179" font-family="IBM Plex Mono" font-size="11.5" opacity="0.5">上線首週數據 · WEEK 1 REACH</text>
         </svg>
-        <div class="doc-gallery">
-          <span class="doc-gallery-label">兩據點現場實景 · 點擊放大</span>
-          <div class="photo-cols">
-            <div>
-              <span class="photo-col-label">中山八德惜福屋（北）</span>
-              <div class="photo-row">
-                <button type="button" class="thumb-btn" data-full="images/zhongshan-1.jpg" data-caption="中山八德惜福屋"><img src="images/zhongshan-1-thumb.jpg" alt="中山八德惜福屋" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/zhongshan-2.jpg" data-caption="中山八德惜福屋"><img src="images/zhongshan-2-thumb.jpg" alt="中山八德惜福屋" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/zhongshan-3.jpg" data-caption="中山八德惜福屋"><img src="images/zhongshan-3-thumb.jpg" alt="中山八德惜福屋" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/zhongshan-4.jpg" data-caption="中山八德惜福屋"><img src="images/zhongshan-4-thumb.jpg" alt="中山八德惜福屋" loading="lazy"></button>
-              </div>
-            </div>
-            <div>
-              <span class="photo-col-label">鳳山工坊（南）</span>
-              <div class="photo-row">
-                <button type="button" class="thumb-btn" data-full="images/fongshan-1.jpg" data-caption="鳳山工坊"><img src="images/fongshan-1-thumb.jpg" alt="鳳山工坊" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/fongshan-2.jpg" data-caption="鳳山工坊"><img src="images/fongshan-2-thumb.jpg" alt="鳳山工坊" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/fongshan-3.jpg" data-caption="鳳山工坊"><img src="images/fongshan-3-thumb.jpg" alt="鳳山工坊" loading="lazy"></button>
-                <button type="button" class="thumb-btn" data-full="images/fongshan-4.jpg" data-caption="鳳山工坊"><img src="images/fongshan-4-thumb.jpg" alt="鳳山工坊" loading="lazy"></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <!-- CASE 4 — ZEROZERO -->
-  <article class="sheet sheet--light grid-stone" id="case-zerozero">
-    <div class="sheet-inner">
-      <div class="sheet-text reveal">
-        <span class="live-badge"><span class="pulse"></span>LIVE · 上線營運中</span>
-        <span class="sheet-code">NO. ZEROZERO—04 · 2025–2026</span>
-        <h3>大豐環保科技<br>zero zero O2O商城</h3>
-        <p class="sheet-desc">在五個案例中，zero zero 是唯一從研究走進電商前台的作品。大豐環保科技希望把傳統回收站轉型為具備數位流通與社群連結能力的循環基地，我參與線上商城 zero zero 的產品規劃與服務設計，透過<span class="hl">顧客旅程共創工作坊</span>，串接線上下單與線下據點取貨的 <span class="hl">O2O 體驗</span>，逐步解決資訊不透明、場域負面印象與人力依賴等痛點，並規劃導入<span class="hl">AI 自動化上架</span>功能，打造可規模複製的數位商城與實體營運雙軌模式，朝<span class="hl">零廢棄、零污染</span>的資源循環目標邁進。商城目前正式上線營運中。</p>
-        <div class="tag-row">
-          <span class="tag-chip">O2O 體驗設計</span>
-          <span class="tag-chip">電商產品規劃</span>
-          <span class="tag-chip">已上線</span>
-        </div>
-        <div class="titleblock">
-          <div><span class="k">Role</span><span class="v">電商產品規劃<br>O2O服務整合</span></div>
-          <div><span class="k">Partner</span><span class="v">白質設計</span></div>
-          <div><span class="k">Status</span><span class="v">上線中</span></div>
-        </div>
-        <a class="sheet-link" href="https://shop.zerozero.com.tw" target="_blank" rel="noopener">造訪 shop.zerozero.com.tw ↗</a>
-      </div>
-      <div class="sheet-visual reveal">
-        <svg viewBox="0 0 480 260" width="100%">
+</template>
+<template id="vis-zerozero">
+<svg viewBox="0 0 480 260" width="100%">
           <defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
           <circle cx="240" cy="130" r="88" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 7" opacity="0.55"/>
           <path d="M240,42 A88,88 0 0 1 320,150" fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#a2)"/>
@@ -928,30 +868,9 @@ svg{ display:block; max-width:100%; height:auto; }
           </video>
           <span class="video-demo-label">zero zero 商城操作實錄</span>
         </div>
-      </div>
-    </div>
-  </article>
-
-  <!-- CASE 5 — LIGHT IT UP -->
-  <article class="sheet sheet--light grid-paper" id="case-lightitup">
-    <div class="sheet-inner">
-      <div class="sheet-text reveal">
-        <span class="sheet-code">NO. LIGHTUP—05 · 2024</span>
-        <h3>光的再造<br>LIGHT IT UP</h3>
-        <p class="sheet-desc">「光的再造」是與恆隆行（Dyson 台灣代理商）旗下、主打循環永續的子品牌 <span class="hl">restyle2050</span> 合作，探索報廢吸塵器再生可行性的前導研究。<span class="hl">模組化組裝系統</span>由合作夥伴單挑概念工作室設計，讓報廢機身能重新拆解、組合成獨一無二的燈具；我與單挑運用<span class="hl">服務藍圖</span>，梳理會員與品牌之間的深層連結，共同負責<span class="hl">商業模式研究與工作坊設計</span>，邀請一般大眾親自動手參與、創作屬於自己的燈飾。這些燈具目前作為<span class="hl">會員回饋贈品</span>小規模試行，驗證商業模式可行性，為後續是否擴大投入正式營運提供決策依據。</p>
-        <div class="tag-row">
-          <span class="tag-chip">商業模式研究</span>
-          <span class="tag-chip">工作坊設計</span>
-          <span class="tag-chip">可行性驗證</span>
-        </div>
-        <div class="titleblock">
-          <div><span class="k">Role</span><span class="v">商業模式研究</span></div>
-          <div><span class="k">Partner</span><span class="v">單挑概念工作室</span></div>
-          <div><span class="k">Status</span><span class="v">2024 完成・商模驗證中</span></div>
-        </div>
-      </div>
-      <div class="sheet-visual reveal">
-        <svg viewBox="0 0 620 236" width="100%">
+</template>
+<template id="vis-lightitup">
+<svg viewBox="0 0 620 236" width="100%">
           <g stroke="currentColor" stroke-width="1" opacity="0.5">
             <line x1="112" y1="48" x2="187" y2="48" marker-end="url(#a1)"/>
             <line x1="247" y1="48" x2="322" y2="48" marker-end="url(#a1)"/>
@@ -984,16 +903,16 @@ svg{ display:block; max-width:100%; height:auto; }
           </g>
 
           <!-- Emphasis: design regeneration & member reward loop -->
-          <path d="M362,120 C420,150 440,95 495,62" fill="none" stroke="#B8842B" stroke-width="1.3" stroke-dasharray="1 5" opacity="0.9"/>
-          <rect x="385" y="150" width="168" height="24" fill="none" stroke="#B8842B" stroke-width="1" opacity="0.85"/>
-          <text x="469" y="166" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#B8842B" font-weight="500">報廢產品再製轉化會員贈品</text>
-          <g transform="translate(497,55) rotate(45)" fill="none" stroke="#B8842B" stroke-width="1.4">
+          <path d="M362,120 C420,150 440,95 495,62" fill="none" class="oc-s" stroke="#D6A03F" stroke-width="1.3" stroke-dasharray="1 5" opacity="0.9"/>
+          <rect x="385" y="150" width="168" height="24" fill="none" class="oc-s" stroke="#D6A03F" stroke-width="1" opacity="0.85"/>
+          <text x="469" y="166" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" class="oc-f" fill="#D6A03F" font-weight="500">報廢產品再製轉化會員贈品</text>
+          <g transform="translate(497,55) rotate(45)" fill="none" class="oc-s" stroke="#D6A03F" stroke-width="1.4">
             <rect x="-8" y="-8" width="16" height="16"/>
           </g>
-          <text x="520" y="52" font-family="IBM Plex Mono" font-size="13" font-weight="700" fill="#B8842B">設計再生與</text>
-          <text x="520" y="67" font-family="IBM Plex Mono" font-size="13" font-weight="700" fill="#B8842B">會員回饋機制</text>
-          <text x="520" y="84" font-family="IBM Plex Mono" font-size="10.5" fill="#B8842B" opacity="0.75">廢棄機身以設計</text>
-          <text x="520" y="98" font-family="IBM Plex Mono" font-size="10.5" fill="#B8842B" opacity="0.75">轉譯再利用</text>
+          <text x="520" y="52" font-family="IBM Plex Mono" font-size="13" font-weight="700" class="oc-f" fill="#D6A03F">設計再生與</text>
+          <text x="520" y="67" font-family="IBM Plex Mono" font-size="13" font-weight="700" class="oc-f" fill="#D6A03F">會員回饋機制</text>
+          <text x="520" y="84" font-family="IBM Plex Mono" font-size="10.5" class="oc-f" fill="#D6A03F" opacity="0.75">廢棄機身以設計</text>
+          <text x="520" y="98" font-family="IBM Plex Mono" font-size="10.5" class="oc-f" fill="#D6A03F" opacity="0.75">轉譯再利用</text>
 
           <line x1="30" y1="141" x2="380" y2="141" stroke="currentColor" stroke-width="1" opacity="0.2"/>
           <text x="215" y="158" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" opacity="0.5">循環經濟商業模式 · RESTYLE 2050</text>
@@ -1008,46 +927,231 @@ svg{ display:block; max-width:100%; height:auto; }
           </g>
         </svg>
         <div class="doc-gallery-label" style="margin-top:10px; text-transform:none; letter-spacing:0.02em;">示意圖依 restyle2050 循環模式重新繪製，非原始素材</div>
-        <div class="doc-gallery">
-          <span class="doc-gallery-label">現場實景 · 點擊放大</span>
-          <div class="photo-row">
-            <button type="button" class="thumb-btn" data-full="images/lightup-2.jpg" data-caption="光的再造 · 改造後燈具成品"><img src="images/lightup-2-thumb.jpg" alt="改造後燈具成品" loading="lazy"></button>
-            <button type="button" class="thumb-btn" data-full="images/lightup-1.jpg" data-caption="光的再造 · 工作坊組裝過程"><img src="images/lightup-1-thumb.jpg" alt="工作坊組裝過程" loading="lazy"></button>
-          </div>
-        </div>
+</template>
+
+<script>
+/* =====================================================================
+   DATA — 案例內容都在這裡，改文字只需要改這一區
+   ---------------------------------------------------------------------
+   desc 內 **文字** = 金色強調；title / cardName / facts 內 \n = 換行
+   galleries 的 thumb 省略時，自動使用「檔名-thumb.副檔名」
+   圖解 SVG 與影片放在頁尾的 <template id="vis-案例id"> 區塊
+   順序 = 頁面順序（也是首頁圖卡順序）
+   ===================================================================== */
+const CASES = [
+  {
+    id: "eden",
+    code: "NO. EDEN—01 · 2026",
+    cardCode: "NO. EDEN—01",
+    cardName: "伊甸基金會\n計畫徵件系統",
+    cardMore: "流程統籌／介面規劃",
+    cardDate: "2026.04 – 2026.05",
+    title: "伊甸基金會\n計畫徵件系統",
+    desc: "伊甸社會福利基金會的計畫申請審核，長期仰賴人工往返與紙本表單，資訊分散、進度難以追蹤。我以**第三方統籌角色**，協調系統開發商與基金會窗口，把會議紀錄與現場訪談轉譯成**兩份徵件流程泳道圖**，並主導**三次介面迭代**——統一登入邏輯、整併預算欄位、為不同補助類型新增客製欄位。系統以 **Ragic** 為底層架構、**Figma** 為介面雛型，預計 **2026 年 8 月正式上線**。",
+    tags: ["流程泳道圖", "Ragic 系統", "Figma Wireframe", "三次迭代設計"],
+    facts: [
+      ["Role", "流程統籌／介面規劃"],
+      ["Stack", "Ragic · Figma"],
+      ["Status", "2026.08 預計上線"],
+    ],
+    galleries: [
+      {
+        label: "實際交付文件 · 點擊放大", layout: "grid",
+        items: [
+          {"full": "images/eden-collection-flow.png", "caption": "伊甸整體收件流程圖", "alt": "伊甸整體收件流程圖"},
+          {"full": "images/eden-ragic-flow.png", "caption": "Ragic 使用者流程圖", "alt": "Ragic 使用者流程圖"},
+        ],
+      },
+    ],
+  },
+  {
+    id: "dashuigou",
+    code: "NO. DASHUIGOU—02 · 2024",
+    cardCode: "NO. DASHUIGOU—02",
+    cardName: "大水溝\n二手屋場域改造",
+    cardMore: "場域改造規劃",
+    cardDate: "2024.08 – 2024.12",
+    title: "大水溝二手屋\n場域改造",
+    desc: "萬華大水溝二手屋，是我於台灣設計研究院推動循環經濟示範計畫中，數據最完整的一個場域案例。透過問卷調查、實地行為觀察與深度訪談，我精準定位出**「入口暗淡、指示不清」是核心流失痛點**，並據此主導**空間動線與陳列邏輯的重新設計**，產出一份可複製到其他二手服務空間的**設計指引文件**。改造後三個月的追蹤數據顯示：**顧客滿意度達 95%**，**新客佔比提升至 62%**，**月均到店人次由 900 人成長到 1,350 人**。",
+    tags: ["空間動線設計", "顧客旅程地圖", "設計指引文件", "前後數據追蹤"],
+    facts: [
+      ["Role", "場域改造規劃"],
+      ["Partner", "玩美文創"],
+      ["Status", "2024 完成 · 持續營運"],
+    ],
+    galleries: [
+      {
+        label: "改造前後實景 · 點擊放大", layout: "cols",
+        groups: [
+          { label: "改造前 BEFORE", items: [
+            {"full": "images/wanhua-before-1.jpg", "caption": "大水溝二手屋 · 改造前", "alt": "大水溝二手屋改造前"},
+            {"full": "images/wanhua-before-2.jpg", "caption": "大水溝二手屋 · 改造前", "alt": "大水溝二手屋改造前"},
+            {"full": "images/wanhua-before-3.jpg", "caption": "大水溝二手屋 · 改造前", "alt": "大水溝二手屋改造前"},
+            {"full": "images/wanhua-before-4.jpg", "caption": "大水溝二手屋 · 改造前", "alt": "大水溝二手屋改造前"},
+            {"full": "images/wanhua-before-5.jpg", "caption": "大水溝二手屋 · 改造前", "alt": "大水溝二手屋改造前"},
+          ] },
+          { label: "改造後 AFTER", items: [
+            {"full": "images/wanhua-after-1.jpg", "caption": "大水溝二手屋 · 改造後", "alt": "大水溝二手屋改造後"},
+            {"full": "images/wanhua-after-2.jpg", "caption": "大水溝二手屋 · 改造後", "alt": "大水溝二手屋改造後"},
+            {"full": "images/wanhua-after-3.jpg", "caption": "大水溝二手屋 · 改造後", "alt": "大水溝二手屋改造後"},
+            {"full": "images/wanhua-after-4.jpg", "caption": "大水溝二手屋 · 改造後", "alt": "大水溝二手屋改造後"},
+            {"full": "images/wanhua-after-5.jpg", "caption": "大水溝二手屋 · 改造後", "alt": "大水溝二手屋改造後"},
+          ] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "tzuchi",
+    code: "NO. TZUCHI—03 · 2024–2026",
+    cardCode: "NO. TZUCHI—03",
+    cardName: "慈濟基金會\n雙據點惜福屋",
+    cardMore: "跨據點服務設計",
+    cardDate: "2024.08 – 2026.02",
+    badge: {"type": "award", "text": "🏆 2026 金點設計獎"},
+    title: "同一個品牌，\n兩種挑戰",
+    desc: "同一個慈濟品牌，北部的中山八德惜福屋與南部的鳳山工坊，面對截然不同的挑戰——前者需要優化既有人流動線，後者要從零建立服務模式。我分別為兩個據點設計對應的服務策略，北部據點導入**人流追蹤機制**驗證動線改善成效，上線一週內獲得**超過 20 則媒體報導**，**觸及人次突破 1,000**；南部鳳山工坊的服務設計成果，也於 2026 年**榮獲金點設計獎**肯定。",
+    tags: ["雙據點策略", "人流追蹤", "媒體聲量"],
+    facts: [
+      ["Role", "服務設計／跨據點協調"],
+      ["Partner", "Atelier AGI\n廢物救星"],
+      ["Status", "北部 2024 完工\n南部 2026 完工"],
+    ],
+    galleries: [
+      {
+        label: "兩據點現場實景 · 點擊放大", layout: "cols",
+        groups: [
+          { label: "中山八德惜福屋（北）", items: [
+            {"full": "images/zhongshan-1.jpg", "caption": "中山八德惜福屋", "alt": "中山八德惜福屋"},
+            {"full": "images/zhongshan-2.jpg", "caption": "中山八德惜福屋", "alt": "中山八德惜福屋"},
+            {"full": "images/zhongshan-3.jpg", "caption": "中山八德惜福屋", "alt": "中山八德惜福屋"},
+            {"full": "images/zhongshan-4.jpg", "caption": "中山八德惜福屋", "alt": "中山八德惜福屋"},
+          ] },
+          { label: "鳳山工坊（南）", items: [
+            {"full": "images/fongshan-1.jpg", "caption": "鳳山工坊", "alt": "鳳山工坊"},
+            {"full": "images/fongshan-2.jpg", "caption": "鳳山工坊", "alt": "鳳山工坊"},
+            {"full": "images/fongshan-3.jpg", "caption": "鳳山工坊", "alt": "鳳山工坊"},
+            {"full": "images/fongshan-4.jpg", "caption": "鳳山工坊", "alt": "鳳山工坊"},
+          ] },
+        ],
+      },
+    ],
+  },
+  {
+    id: "zerozero",
+    code: "NO. ZEROZERO—04 · 2025–2026",
+    cardCode: "NO. ZEROZERO—04",
+    cardName: "大豐環保科技\nzero zero 商城",
+    cardMore: "電商產品規劃",
+    cardDate: "2025.08 – 2026.02",
+    badge: {"type": "live", "text": "LIVE · 上線營運中"},
+    title: "大豐環保科技\nzero zero O2O商城",
+    desc: "在五個案例中，zero zero 是唯一從研究走進電商前台的作品。大豐環保科技希望把傳統回收站轉型為具備數位流通與社群連結能力的循環基地，我參與線上商城 zero zero 的產品規劃與服務設計，透過**顧客旅程共創工作坊**，串接線上下單與線下據點取貨的 **O2O 體驗**，逐步解決資訊不透明、場域負面印象與人力依賴等痛點，並規劃導入**AI 自動化上架**功能，打造可規模複製的數位商城與實體營運雙軌模式，朝**零廢棄、零污染**的資源循環目標邁進。商城目前正式上線營運中。",
+    tags: ["O2O 體驗設計", "電商產品規劃", "已上線"],
+    facts: [
+      ["Role", "電商產品規劃\nO2O服務整合"],
+      ["Partner", "白質設計"],
+      ["Status", "上線中"],
+    ],
+    link: {"href": "https://shop.zerozero.com.tw", "text": "造訪 shop.zerozero.com.tw ↗"},
+  },
+  {
+    id: "lightitup",
+    code: "NO. LIGHTUP—05 · 2024",
+    cardCode: "NO. LIGHTUP—05",
+    cardName: "光的再造\nLIGHT IT UP",
+    cardMore: "商業模式研究",
+    cardDate: "2024.08 – 2024.12",
+    title: "光的再造\nLIGHT IT UP",
+    desc: "「光的再造」是與恆隆行（Dyson 台灣代理商）旗下、主打循環永續的子品牌 **restyle2050** 合作，探索報廢吸塵器再生可行性的前導研究。**模組化組裝系統**由合作夥伴單挑概念工作室設計，讓報廢機身能重新拆解、組合成獨一無二的燈具；我與單挑運用**服務藍圖**，梳理會員與品牌之間的深層連結，共同負責**商業模式研究與工作坊設計**，邀請一般大眾親自動手參與、創作屬於自己的燈飾。這些燈具目前作為**會員回饋贈品**小規模試行，驗證商業模式可行性，為後續是否擴大投入正式營運提供決策依據。",
+    tags: ["商業模式研究", "工作坊設計", "可行性驗證"],
+    facts: [
+      ["Role", "商業模式研究"],
+      ["Partner", "單挑概念工作室"],
+      ["Status", "2024 完成・商模驗證中"],
+    ],
+    galleries: [
+      {
+        label: "現場實景 · 點擊放大", layout: "row",
+        items: [
+          {"full": "images/lightup-2.jpg", "caption": "光的再造 · 改造後燈具成品", "alt": "改造後燈具成品"},
+          {"full": "images/lightup-1.jpg", "caption": "光的再造 · 工作坊組裝過程", "alt": "工作坊組裝過程"},
+        ],
+      },
+    ],
+  },
+];
+
+/* =====================================================================
+   RENDER — 以下程式把上方資料變成頁面，一般不需要修改
+   ===================================================================== */
+const md = s => s.replace(/\*\*(.+?)\*\*/g, '<span class="hl">$1</span>');
+const nl = s => s.replace(/\n/g, '<br>');
+const thumbOf = it => it.thumb || it.full.replace(/(\.\w+)$/, '-thumb$1');
+const thumbBtn = it =>
+  `<button type="button" class="thumb-btn" data-full="${it.full}" data-caption="${it.caption || ''}">` +
+  `<img src="${thumbOf(it)}" alt="${it.alt || it.caption || ''}" loading="lazy"></button>`;
+const photoRow = items => `<div class="photo-row">${items.map(thumbBtn).join('')}</div>`;
+function galleryHTML(g){
+  let body;
+  if (g.layout === 'cols')
+    body = `<div class="photo-cols">${g.groups.map(gr =>
+      `<div><span class="photo-col-label">${gr.label}</span>${photoRow(gr.items)}</div>`).join('')}</div>`;
+  else if (g.layout === 'grid')
+    body = `<div class="doc-grid">${g.items.map(thumbBtn).join('')}</div>`;
+  else body = photoRow(g.items);
+  return `<div class="doc-gallery"><span class="doc-gallery-label">${g.label}</span>${body}</div>`;
+}
+function badgeHTML(b){
+  if (!b) return '';
+  return b.type === 'live'
+    ? `<span class="live-badge"><span class="pulse"></span>${b.text}</span>`
+    : `<span class="award-badge">${b.text}</span>`;
+}
+function caseHTML(c, i){
+  const tpl = document.getElementById('vis-' + c.id);
+  const visual = (tpl ? tpl.innerHTML : '') + (c.galleries || []).map(galleryHTML).join('');
+  return `
+  <article class="sheet ${i % 2 === 0 ? 'grid-navy-deep' : 'grid-navy'}" id="case-${c.id}">
+    <div class="sheet-inner">
+      <div class="sheet-text reveal">
+        ${badgeHTML(c.badge)}
+        <span class="sheet-code">${c.code}</span>
+        <h3>${nl(c.title)}</h3>
+        <p class="sheet-desc">${md(c.desc)}</p>
+        <div class="tag-row">${c.tags.map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
+        <div class="titleblock">${c.facts.map(f => `<div><span class="k">${f[0]}</span><span class="v">${nl(f[1])}</span></div>`).join('')}</div>
+        ${c.link ? `<a class="sheet-link" href="${c.link.href}" target="_blank" rel="noopener">${c.link.text}</a>` : ''}
       </div>
+      <div class="sheet-visual reveal">${visual}</div>
     </div>
-  </article>
-</section>
+  </article>`;
+}
+document.getElementById('heroStack').innerHTML = CASES.map(c => `
+        <a class="stack-card" href="#case-${c.id}">
+          <span class="stack-card-inner">
+            <span class="stack-code">${c.cardCode}</span>
+            <span class="stack-name">${nl(c.cardName)}</span>
+            <span class="stack-more">${c.cardMore} →</span>
+            <span class="stack-date">${c.cardDate}</span>
+          </span>
+        </a>`).join('');
+document.getElementById('cases').innerHTML = CASES.map(caseHTML).join('');
 
-<!-- ===================== FOOTER / CONTACT ===================== -->
-<footer id="contact" class="footer footer--light grid-stone">
-  <div class="footer-inner reveal">
-    <span class="eyebrow">03 — Contact</span>
-    <h2>想聊聊<br>下一個案子嗎？</h2>
-    <p class="lede">目前正在尋找 UX 研究員 或 產品經理/專案經理 的下一個機會，歡迎透過以下方式與我聯繫，或先看看完整的履歷與更多案例。</p>
-    <div class="contact-links">
-      <a href="mailto:yulinpan0118@gmail.com">✉ yulinpan0118@gmail.com</a>
-      <a href="https://www.linkedin.com/in/ulinggggg/" target="_blank" rel="noopener">↗ LinkedIn</a>
-      <a href="https://uling.super.site/" target="_blank" rel="noopener">↗ 完整作品集（Notion）</a>
-    </div>
-  </div>
-  <div class="titleblock-footer">
-    <span>YULING PAN — PORTFOLIO</span>
-    <span>SHEET 01 OF 01</span>
-    <span>REV. 2026.08</span>
-    <span>SCALE N.T.S.</span>
-  </div>
-</footer>
-
-<div class="lightbox" id="lightbox" role="dialog" aria-hidden="true">
-  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="關閉">✕</button>
-  <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="上一張">‹</button>
-  <img class="lightbox-img" id="lightboxImg" src="" alt="">
-  <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="下一張">›</button>
-  <div class="lightbox-caption" id="lightboxCaption"></div>
-  <div class="lightbox-counter" id="lightboxCounter"></div>
-</div>
+// Theme toggle (light default; choice remembered in this browser)
+const themeBtn = document.getElementById('themeToggle');
+function syncThemeBtn(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  themeBtn.textContent = dark ? '☀️ 淺色模式' : '🌙 深色模式';
+}
+themeBtn.addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  try { localStorage.setItem('yp-theme', next); } catch (e) {}
+  syncThemeBtn();
+});
+syncThemeBtn();
+</script>
 
 <script>
 // Mobile nav toggle
