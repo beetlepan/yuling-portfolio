@@ -190,6 +190,7 @@ svg{ display:block; max-width:100%; height:auto; }
   display:flex; align-items:center; gap:10px;
 }
 .hero-eyebrow::before{ content:''; width:24px; height:1px; background:var(--cyan); }
+@media (max-width:560px){ .hero-eyebrow{ font-size:10.5px; letter-spacing:0.1em; gap:10px; } }
 
 .hero h1{
   font-size:clamp(34px, 5.4vw, 62px);
@@ -682,7 +683,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
   <div class="hero-ruler right"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">UX Researcher / Project Manager</div>
+      <div class="hero-eyebrow">SERVICE DESIGN / PROJECT MANAGEMENT</div>
       <h1>服務藍圖，<br>從人的故事<span class="accent">畫</span>起。</h1>
       <p class="lede">潘昱霖，約三年的場域研究與服務設計經驗，曾任台灣設計研究院專案經理，把現場觀察與訪談整理成流程與系統規格。作品包含參與的慈濟鳳山工坊案（2026 金點設計獎）、問卷 95% 受訪者滿意的二手空間改造，以及伊甸基金會的徵件流程數位化。目前找產品規劃或專案管理方向的工作。</p>
       <div class="hero-stats">
@@ -1111,7 +1112,7 @@ function caseHTML(c, i){
       </a>
     </div>
     <div class="hv-tabs">
-      ${CASES.map((c, i) => `<button type="button" class="hv-tab${i === 0 ? ' on' : ''}"><i></i><b>${noOf(c)}${c.heroBadge ? ' 🏆' : ''}</b><span>${shortOf(c)}</span></button>`).join('')}
+      ${CASES.map((c, i) => `<button type="button" class="hv-tab${i === 0 ? ' on' : ''}"><i></i><b>${noOf(c)}</b><span>${shortOf(c)}</span></button>`).join('')}
     </div>`;
   const frame = view.querySelector('#hvFrame');
   const imgs = [...view.querySelectorAll('.hv-img')];
