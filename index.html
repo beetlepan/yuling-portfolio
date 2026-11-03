@@ -135,16 +135,23 @@ svg{ display:block; max-width:100%; height:auto; }
 .nav-toggle{ display:none; color:var(--paper-warm); font-size:22px; }
 
 @media (max-width:760px){
+  /* dropdown hangs from the bottom edge of the nav; hidden (no stray border line) until opened */
   .nav-links{
-    position:fixed; top:58px; left:0; right:0;
+    position:absolute; top:100%; left:0; right:0;
     flex-direction:column; gap:0;
     background:var(--navy-deep);
-    max-height:0; overflow:hidden;
-    transition:max-height 0.35s ease;
-    border-bottom:1px solid var(--line-on-navy);
+    max-height:0; overflow:hidden; visibility:hidden;
+    transition:max-height 0.35s ease, visibility 0s linear 0.35s;
   }
-  .nav-links.open{ max-height:280px; }
-  .nav-links a{ padding:16px var(--edge); border-top:1px solid var(--line-on-navy); }
+  .nav-links.open{
+    max-height:420px; visibility:visible;
+    border-bottom:1px solid var(--line-on-navy);
+    transition:max-height 0.35s ease;
+  }
+  .nav-links a{ display:block; padding:16px var(--edge); border-top:1px solid var(--line-on-navy); }
+  .nav-links a::after{ display:none; }
+  .nav-links li:last-child{ border-top:1px solid var(--line-on-navy); }
+  .nav-links li button.theme-toggle-link{ display:inline-block; margin:14px var(--edge) 18px; }
   .nav-toggle{ display:block; }
 }
 
@@ -264,6 +271,14 @@ html[data-theme="light"]{ --hv-line:var(--cyan-dim); }
 .hv-sheet.front{ right:5%; top:25%; transform:rotate(3deg) translateY(14px); }
 .hv-mock.on .hv-sheet.back{ transform:rotate(-4.5deg); }
 .hv-mock.on .hv-sheet.front{ transform:rotate(3deg); }
+.hv-badge{
+  position:absolute; left:14px; top:14px; z-index:3;
+  padding:6px 12px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em;
+  color:var(--ochre-bright); background:rgba(8,20,30,0.78); border:1px solid var(--ochre-bright);
+  opacity:0; transform:translateY(-6px); transition:opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s;
+  pointer-events:none;
+}
+.hv-badge.on{ opacity:1; transform:none; }
 .hv-cap{
   position:absolute; left:0; right:0; bottom:0; z-index:2;
   padding:46px 18px 16px;
@@ -598,8 +613,10 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
   :where(html[data-theme="light"]) .nav-links .theme-toggle-link:hover{ border-color:var(--ink); }
   :where(html[data-theme="light"]) .nav-toggle{ color:var(--ink); }
 @media (max-width:760px){
-  :where(html[data-theme="light"]) .nav-links{ background:var(--paper-warm); border-bottom:1px solid var(--line-on-paper); }
+  :where(html[data-theme="light"]) .nav-links{ background:var(--paper-warm); }
+  :where(html[data-theme="light"]) .nav-links.open{ border-bottom:1px solid var(--line-on-paper); }
   :where(html[data-theme="light"]) .nav-links a{ border-top:1px solid var(--line-on-paper); }
+  :where(html[data-theme="light"]) .nav-links li:last-child{ border-top:1px solid var(--line-on-paper); }
 }
   :where(html[data-theme="light"]) .hero{ color:var(--ink); }
   :where(html[data-theme="light"]) .hero-ruler{ background:repeating-linear-gradient(to bottom, var(--line-on-paper) 0 1px, transparent 1px 12px); opacity:0.8; }
@@ -667,7 +684,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
     <div>
       <div class="hero-eyebrow">UX Researcher / Project Manager</div>
       <h1>服務藍圖，<br>從人的故事<span class="accent">畫</span>起。</h1>
-      <p class="lede">潘昱霖，累積三年以上使用者研究與服務設計實戰經驗，曾任台灣設計研究院專案經理。擅長把田野訪談與行為觀察，轉譯成可執行的服務藍圖與系統介面——目前正在科技、金融科技、電商領域，尋找下一個能落地想法的舞台。</p>
+      <p class="lede">潘昱霖，約三年的場域研究與服務設計經驗，曾任台灣設計研究院專案經理，把現場觀察與訪談整理成流程與系統規格。作品包含參與的慈濟鳳山工坊案（2026 金點設計獎）、問卷 95% 受訪者滿意的二手空間改造，以及伊甸基金會的徵件流程數位化。目前找產品規劃或專案管理方向的工作。</p>
       <div class="hero-stats">
         <div class="hero-stat"><div class="num"><span>3+</span></div><div class="label">YEARS · 實戰經驗</div></div>
         <div class="hero-stat"><div class="num"><span>5</span></div><div class="label">CASES · 精選案例</div></div>
@@ -883,7 +900,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
    desc 內 **文字** = 金色強調；title / cardName / facts 內 \n = 換行
    galleries 的 thumb 省略時，自動使用「檔名-thumb.副檔名」
    圖解 SVG 與影片放在頁尾的 <template id="vis-案例id"> 區塊
-   heroImg / heroPos = 首頁右側取景框的照片與裁切焦點（x% y%）；
+   heroImg / heroPos = 首頁右側取景框的照片與裁切焦點（x% y%）；heroBadge = 取景框左上角的獎項標示（可省略）；
    沒有現場照的案例可改用 heroMock: [圖1, 圖2]，會做成兩張疊放的圖紙
    順序 = 頁面順序（也是首頁照片順序）
    ===================================================================== */
@@ -950,7 +967,7 @@ const CASES = [
   },
   {
     id: "tzuchi",
-    heroImg: "images/hero-tzuchi.jpg", heroPos: "50% 55%",
+    heroImg: "images/hero-tzuchi.jpg", heroPos: "50% 55%", heroBadge: "🏆 2026 金點設計獎",
     code: "NO. TZUCHI—03 · 2024–2026",
     cardCode: "NO. TZUCHI—03",
     cardName: "慈濟基金會\n雙據點惜福屋",
@@ -1085,6 +1102,7 @@ function caseHTML(c, i){
             ? `<div class="hv-img hv-mock${i === 0 ? ' on' : ''}" role="img" aria-label="${nameOf(c)}">` +
               `<img class="hv-sheet back" src="${c.heroMock[0]}" alt=""><img class="hv-sheet front" src="${c.heroMock[1]}" alt=""></div>`
             : `<img class="hv-img${i === 0 ? ' on' : ''}" src="${c.heroImg}" alt="${nameOf(c)}" style="--pos:${c.heroPos || '50% 50%'}">`).join('')}
+          ${CASES.map((c, i) => c.heroBadge ? `<span class="hv-badge${i === 0 ? ' on' : ''}" data-i="${i}">${c.heroBadge}</span>` : '').join('')}
           <div class="hv-cap">
             <div><span class="hv-cap-code" id="hvCode"></span><span class="hv-cap-name" id="hvName"></span></div>
             <span class="hv-cap-go">查看案例 ↗</span>
@@ -1093,11 +1111,12 @@ function caseHTML(c, i){
       </a>
     </div>
     <div class="hv-tabs">
-      ${CASES.map((c, i) => `<button type="button" class="hv-tab${i === 0 ? ' on' : ''}"><i></i><b>${noOf(c)}</b><span>${shortOf(c)}</span></button>`).join('')}
+      ${CASES.map((c, i) => `<button type="button" class="hv-tab${i === 0 ? ' on' : ''}"><i></i><b>${noOf(c)}${c.heroBadge ? ' 🏆' : ''}</b><span>${shortOf(c)}</span></button>`).join('')}
     </div>`;
   const frame = view.querySelector('#hvFrame');
   const imgs = [...view.querySelectorAll('.hv-img')];
   const tabs = [...view.querySelectorAll('.hv-tab')];
+  const badges = [...view.querySelectorAll('.hv-badge')];
   const code = view.querySelector('#hvCode'), name = view.querySelector('#hvName');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const INTERVAL = 4800;
@@ -1109,6 +1128,7 @@ function caseHTML(c, i){
       t.classList.toggle('on', k === i);
       if (k === i){ t.classList.remove('on'); void t.offsetWidth; t.classList.add('on'); } // restart progress line
     });
+    badges.forEach(b => b.classList.toggle('on', +b.dataset.i === i));
     frame.href = '#case-' + CASES[i].id;
     code.textContent = CASES[i].code.split(' · ')[0];
     name.textContent = nameOf(CASES[i]);
