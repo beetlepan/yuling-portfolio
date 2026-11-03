@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant" data-theme="light">
 <head>
-<script>(function(){var t="light";try{var s=localStorage.getItem("yp-theme");if(s==="dark"||s==="light")t=s;}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
+<script>(function(){var t="dark";try{var s=localStorage.getItem("yp-theme");if(s==="dark"||s==="light")t=s;}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>潘昱霖 Yuling Pan — 服務設計 / 專案管理 作品集</title>
@@ -11,28 +11,29 @@
 <meta property="og:description" content="潘昱霖的服務設計與專案管理作品集，收錄五個場域研究與服務設計案例，含 2026 金點設計獎作品。">
 <meta property="og:url" content="https://beetlepan.github.io/yuling-portfolio/">
 <meta property="og:locale" content="zh_TW">
-<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ===================== TOKENS ===================== */
 :root{
-  --navy: #122A3C;
-  --navy-deep: #0B1B28;
-  --paper: #ECE6D3;
-  --paper-warm: #F4EFDF;
-  --cyan: #86C6CF;
-  --cyan-dim: #4E8A93;
-  --ochre: #B8842B;
-  --ochre-bright: #D6A03F;
-  --ink: #17211C;
-  --ink-soft: #45524B;
-  --line-on-navy: rgba(134,198,207,0.28);
-  --line-on-paper: rgba(18,42,60,0.20);
+  --navy: #1B1B1F;
+  --navy-deep: #0F0F11;
+  --paper: #E9E9EB;
+  --paper-warm: #F7F7F8;
+  --cyan: #B7B7C0;
+  --cyan-dim: #6E6E78;
+  --ochre: #8A00E0;
+  --ochre-bright: #B84DFF;
+  --ink: #141416;
+  --ink-soft: #55555C;
+  --line-on-navy: rgba(183,183,192,0.28);
+  --line-on-paper: rgba(20,20,22,0.20);
 
   --font-display: 'Space Grotesk', 'Noto Sans TC', sans-serif;
-  --font-body: 'Noto Serif TC', 'Noto Sans TC', serif;
+  --font-body: 'Noto Sans TC', sans-serif;
   --font-mono: 'IBM Plex Mono', 'Noto Sans TC', monospace;
 
   --sheet-pad: clamp(24px, 6vw, 88px);
@@ -55,7 +56,7 @@ img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
 ul{ list-style:none; }
 button{ font-family:inherit; background:none; border:none; cursor:pointer; color:inherit; }
-h1,h2,h3,h4{ font-family:var(--font-display); font-weight:700; line-height:1.15; }
+h1,h2,h3,h4{ font-family:var(--font-display); font-weight:900; line-height:1.15; }
 svg{ display:block; max-width:100%; height:auto; }
 
 @media (prefers-reduced-motion: reduce){
@@ -99,7 +100,7 @@ svg{ display:block; max-width:100%; height:auto; }
   position:fixed; top:0; left:0; right:0; z-index:100;
   display:flex; align-items:center; justify-content:space-between;
   padding:18px var(--edge);
-  background:rgba(11,27,40,0.88);
+  background:rgba(15,15,17,0.88);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line-on-navy);
   color:var(--paper-warm);
@@ -113,13 +114,13 @@ svg{ display:block; max-width:100%; height:auto; }
 .nav-mark .dot{
   width:8px; height:8px; border-radius:50%;
   background:var(--ochre-bright);
-  box-shadow:0 0 0 3px rgba(214,160,63,0.2);
+  box-shadow:0 0 0 3px rgba(184,77,255,0.2);
 }
 .nav-links{ display:flex; gap:32px; }
 .nav-links a{
   font-family:var(--font-mono);
   font-size:12.5px; letter-spacing:0.08em;
-  color:rgba(244,239,223,0.72);
+  color:rgba(247,247,248,0.72);
   position:relative;
   padding-bottom:3px;
   transition:color 0.25s ease;
@@ -161,6 +162,19 @@ svg{ display:block; max-width:100%; height:auto; }
 }
 
 /* ===================== HERO ===================== */
+.hero{ overflow:hidden; }
+.hero > *{ position:relative; z-index:1; }
+/* purple orb: fixed background accent, rotates with scroll */
+.orb{ position:fixed; top:-198px; right:-140px; width:430px; height:430px; border-radius:50%; background:rgba(158,0,255,var(--o,1)); z-index:0; pointer-events:none; }
+.orb svg{ position:absolute; inset:0; width:100%; height:100%; will-change:transform; }
+.orb text{ font-family:var(--font-mono); font-size:12px; font-weight:500; letter-spacing:.1em; }
+.hv-nudge{}
+@media (min-width:761px) and (max-width:1700px){ .hv{ margin-top:56px; } }
+.sheet-inner, .work-intro, .about > *, .footer > *{ position:relative; z-index:1; }
+@media (max-width:760px){ .orb text{ font-size:17px; } .orb{ width:250px; height:250px; top:-114px; right:-86px; } }
+
+@media (max-width:760px){    }
+
 .hero{
   min-height:100svh;
   color:var(--paper-warm);
@@ -209,7 +223,7 @@ svg{ display:block; max-width:100%; height:auto; }
   font-family:var(--font-body);
   font-size:clamp(15px,1.6vw,17.5px);
   line-height:1.95;
-  color:rgba(244,239,223,0.82);
+  color:rgba(247,247,248,0.82);
   max-width:52ch;
   margin-bottom:36px;
   text-align:justify;
@@ -231,7 +245,7 @@ svg{ display:block; max-width:100%; height:auto; }
 .hero-stat .num span{ color:var(--ochre-bright); }
 .hero-stat .label{
   font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em;
-  color:rgba(244,239,223,0.55); margin-top:4px;
+  color:rgba(247,247,248,0.55); margin-top:4px;
 }
 
 /* ===================== HERO VIEWER (framed photo + numbered tabs) ===================== */
@@ -264,12 +278,12 @@ html[data-theme="light"]{ --hv-line:var(--cyan-dim); }
 /* mock-up slide: two stacked blueprint sheets on a dotted board (used when a case has no photo) */
 .hv-mock{
   background-color:var(--navy);
-  background-image:radial-gradient(var(--line-on-navy) 1px, transparent 1px), radial-gradient(120% 90% at 30% 20%, rgba(134,198,207,0.10), transparent 60%);
+  background-image:radial-gradient(var(--line-on-navy) 1px, transparent 1px), radial-gradient(120% 90% at 30% 20%, rgba(183,183,192,0.10), transparent 60%);
   background-size:28px 28px, auto;
 }
 .hv-sheet{
   position:absolute; width:68%; height:auto; background:#fff;
-  border:1px solid rgba(18,42,60,0.25);
+  border:1px solid rgba(20,20,22,0.25);
   box-shadow:0 18px 34px rgba(0,0,0,0.38), 0 2px 6px rgba(0,0,0,0.25);
   transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
 }
@@ -280,7 +294,7 @@ html[data-theme="light"]{ --hv-line:var(--cyan-dim); }
 .hv-badge{
   position:absolute; left:14px; top:14px; z-index:3;
   padding:6px 12px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em;
-  color:var(--ochre-bright); background:rgba(8,20,30,0.78); border:1px solid var(--ochre-bright);
+  color:var(--ochre-bright); background:rgba(10,10,12,0.78); border:1px solid var(--ochre-bright);
   opacity:0; transform:translateY(-6px); transition:opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s;
   pointer-events:none;
 }
@@ -288,8 +302,8 @@ html[data-theme="light"]{ --hv-line:var(--cyan-dim); }
 .hv-cap{
   position:absolute; left:0; right:0; bottom:0; z-index:2;
   padding:46px 18px 16px;
-  background:linear-gradient(to top, rgba(8,20,30,0.86), rgba(8,20,30,0));
-  color:#F4EFDF; display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+  background:linear-gradient(to top, rgba(10,10,12,0.86), rgba(10,10,12,0));
+  color:#F7F7F8; display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
 }
 .hv-cap-code{ display:block; font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; color:var(--ochre-bright); margin-bottom:4px; }
 .hv-cap-name{ display:block; font-family:var(--font-display); font-weight:700; font-size:clamp(15px, 1.5vw, 19px); line-height:1.3; }
@@ -351,7 +365,7 @@ html[data-theme="light"] .hv-tab b{ color:var(--ochre); }
   font-size:clamp(26px, 3.4vw, 38px);
   margin-top:14px; color:var(--paper-warm);
 }
-.about-body p{ font-size:16px; color:rgba(244,239,223,0.8); max-width:56ch; margin-bottom:18px; text-align:justify; }
+.about-body p{ font-size:16px; color:rgba(247,247,248,0.8); max-width:56ch; margin-bottom:18px; text-align:justify; }
 .hl{ font-weight:700; color:var(--ochre-bright); }
 :where(html[data-theme="light"]) .sheet .hl{ color:var(--ochre); }
 :where(html[data-theme="light"]) .footer .hl{ color:var(--ochre); }
@@ -378,20 +392,41 @@ html[data-theme="light"] .hv-tab b{ color:var(--ochre); }
 .legend-list .mark.dot{ border-radius:50%; }
 .legend-list .mark.tri{ border:none; width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-bottom:9px solid var(--cyan); }
 
+
+/* legend filter */
+
+.legend-list li{ padding:0; }
+.lg-btn{ display:flex; align-items:center; gap:12px; width:calc(100% + 16px); padding:9px 8px; margin:0 -8px; text-align:left; color:inherit; font:inherit; letter-spacing:inherit; border-radius:2px; transition:background .2s, color .2s; }
+.lg-btn:hover{ background:rgba(158,0,255,.12); }
+.lg-btn:focus-visible{ outline:2px solid var(--ochre-bright); outline-offset:1px; }
+.lg-btn[aria-pressed="true"]{ background:rgba(158,0,255,.22); color:var(--ochre-bright); }
+.lg-btn[aria-pressed="true"] .mark{ border-color:var(--ochre-bright); background:var(--ochre-bright); }
+.lg-btn[aria-pressed="true"] .mark.tri{ background:none; border-bottom-color:var(--ochre-bright); }
+.lg-result{ margin-top:14px; font-family:var(--font-mono); font-size:12px; line-height:1.9; color:inherit; opacity:.85; min-height:1.9em; }
+.lg-result a{ color:var(--ochre-bright); border-bottom:1px solid currentColor; margin-right:12px; white-space:nowrap; }
+.lg-hint{ opacity:.55; }
+.sheet{ transition:opacity .35s ease; }
+body.m-filter .sheet:not(.m-hit){ opacity:.28; }
+.method-flag{ display:inline-block; margin:0 0 10px 10px; padding:2px 9px; font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; color:#fff; background:#9E00FF; border-radius:999px; vertical-align:middle; }
+:where(html[data-theme="light"]) .lg-btn[aria-pressed="true"]{ color:var(--ochre); }
+:where(html[data-theme="light"]) .lg-btn[aria-pressed="true"] .mark{ border-color:var(--ochre); background:var(--ochre); }
+:where(html[data-theme="light"]) .lg-btn[aria-pressed="true"] .mark.tri{ background:none; border-bottom-color:var(--ochre); }
+:where(html[data-theme="light"]) .lg-result a{ color:var(--ochre); }
 .credentials{ margin-top:28px; }
 .credentials .row{
   display:flex; justify-content:space-between; gap:16px;
   padding:12px 0; border-top:1px solid var(--line-on-navy);
-  font-size:13.5px; color:rgba(244,239,223,0.8);
+  font-size:13.5px; color:rgba(247,247,248,0.8);
 }
 .credentials .row span:first-child{ min-width:0; }
 .credentials .row .tag{ font-family:var(--font-mono); font-size:11px; color:var(--ochre-bright); white-space:nowrap; padding-top:2px;}
 
 /* ===================== WORK / SHEETS ===================== */
-.work-intro{ padding:0 var(--edge); max-width:1280px; margin:0 auto; }
+.work-intro{ padding:clamp(40px,4.5vw,64px) var(--edge) clamp(24px,2.5vw,36px); max-width:1280px; margin:0 auto; }
+#work{ border-top:1px solid var(--line-on-navy); }
+:where(html[data-theme="light"]) #work{ border-top-color:var(--line-on-paper); }
 .work-transition{
-  height:40px;
-  background:linear-gradient(to bottom, var(--navy), var(--navy-deep));
+  display:none;
 }
 
 .sheet{
@@ -399,7 +434,7 @@ html[data-theme="light"] .hv-tab b{ color:var(--ochre); }
   padding:56px 0 96px;
   overflow:hidden;
 }
-.sheet:first-of-type{ padding-top:32px; }
+.sheet:first-of-type{ padding-top:clamp(40px,4vw,56px); }
 .sheet-inner{
   max-width:1280px; margin:0 auto; padding:0 var(--edge);
   display:grid; grid-template-columns:0.92fr 1.08fr; gap:56px; align-items:start;
@@ -413,9 +448,9 @@ html[data-theme="light"] .hv-tab b{ color:var(--ochre); }
 }
 
 :where(html[data-theme="dark"]) .sheet{ color:var(--paper-warm); }
-:where(html[data-theme="dark"]) .sheet .sheet-desc{ color:rgba(244,239,223,0.8); }
+:where(html[data-theme="dark"]) .sheet .sheet-desc{ color:rgba(247,247,248,0.8); }
 :where(html[data-theme="dark"]) .sheet .titleblock{ border-color:var(--line-on-navy); }
-:where(html[data-theme="dark"]) .sheet .titleblock .k{ color:rgba(244,239,223,0.5); }
+:where(html[data-theme="dark"]) .sheet .titleblock .k{ color:rgba(247,247,248,0.5); }
 :where(html[data-theme="dark"]) .sheet .tag-chip{ background:var(--navy); border-color:var(--cyan); color:var(--paper-warm); font-weight:700; }
 :where(html[data-theme="dark"]) .sheet .sheet-code{ color:var(--cyan); }
 
@@ -436,7 +471,7 @@ html[data-theme="light"] .hv-tab b{ color:var(--ochre); }
 .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px; }
 .tag-chip{
   font-family:var(--font-mono); font-size:11px; letter-spacing:0.03em;
-  border:1px solid; padding:5px 11px;
+  border:1px solid; padding:5px 13px; border-radius:999px;
 }
 
 .titleblock{
@@ -462,7 +497,7 @@ html[data-theme="light"] .hv-tab b{ color:var(--ochre); }
   padding:18px;
   display:flex; align-items:center; gap:12px;
   font-family:var(--font-mono); font-size:11px; letter-spacing:0.02em;
-  color:rgba(244,239,223,0.55);
+  color:rgba(247,247,248,0.55);
 }
 :where(html[data-theme="light"]) .sheet .photo-slot{ border-color:var(--line-on-paper); color:var(--ink-soft); }
 .photo-slot .icon{ font-size:16px; flex-shrink:0; }
@@ -498,7 +533,7 @@ html[data-theme="light"] .hv-tab b{ color:var(--ochre); }
 }
 .footer-inner{ max-width:900px; margin:0 auto; text-align:left; }
 .footer h2{ font-size:clamp(30px,5vw,54px); margin:18px 0 26px; }
-.footer p.lede{ font-family:var(--font-body); font-size:16px; color:rgba(244,239,223,0.78); max-width:56ch; margin-bottom:44px; text-align:justify; }
+.footer p.lede{ font-family:var(--font-body); font-size:16px; color:rgba(247,247,248,0.78); max-width:56ch; margin-bottom:44px; text-align:justify; }
 
 .contact-links{ display:flex; flex-wrap:wrap; gap:16px 40px; margin-bottom:80px; }
 .contact-links a{
@@ -509,12 +544,14 @@ html[data-theme="light"] .hv-tab b{ color:var(--ochre); }
 }
 .contact-links a:hover{ border-color:var(--cyan); color:var(--cyan); }
 
+.foot-mark{ width:60px; height:60px; border-radius:50%; background:#9E00FF; display:grid; place-items:center; margin:0 var(--edge) 28px auto; max-width:none; }
+.foot-mark img{ width:38px; height:auto; transform:rotate(-6deg); }
 .titleblock-footer{
   border-top:1px solid var(--line-on-navy);
   padding:22px var(--edge) 26px;
   display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 28px;
   font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.08em;
-  color:rgba(244,239,223,0.42);
+  color:rgba(247,247,248,0.42);
   max-width:1280px; margin:0 auto;
 }
 
@@ -553,32 +590,32 @@ html[data-theme="light"] .hv-tab b{ color:var(--ochre); }
 .lightbox{
   position:fixed; inset:0; z-index:1000; display:none;
   align-items:center; justify-content:center; flex-direction:column;
-  background:rgba(11,27,40,0.95); padding:48px 20px;
+  background:rgba(15,15,17,0.95); padding:48px 20px;
 }
 .lightbox.open{ display:flex; }
-.lightbox-img{ max-width:min(1200px,92vw); max-height:76vh; object-fit:contain; border:1px solid rgba(134,198,207,0.4); }
-.lightbox-caption{ font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em; color:#F4EFDF; margin-top:18px; }
+.lightbox-img{ max-width:min(1200px,92vw); max-height:76vh; object-fit:contain; border:1px solid rgba(183,183,192,0.4); }
+.lightbox-caption{ font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em; color:#F7F7F8; margin-top:18px; }
 .lightbox-close{
-  position:absolute; top:22px; right:26px; font-size:18px; color:#F4EFDF;
-  background:none; border:1px solid rgba(244,239,223,0.3); width:38px; height:38px; cursor:pointer;
+  position:absolute; top:22px; right:26px; font-size:18px; color:#F7F7F8;
+  background:none; border:1px solid rgba(247,247,248,0.3); width:38px; height:38px; cursor:pointer;
 }
-.lightbox-close:hover{ border-color:#86C6CF; color:#86C6CF; }
+.lightbox-close:hover{ border-color:#B7B7C0; color:#B7B7C0; }
 
 .lightbox-nav{
   position:absolute; top:50%; transform:translateY(-50%);
-  font-size:28px; line-height:1; color:#F4EFDF;
-  background:rgba(244,239,223,0.06); border:1px solid rgba(244,239,223,0.3);
+  font-size:28px; line-height:1; color:#F7F7F8;
+  background:rgba(247,247,248,0.06); border:1px solid rgba(247,247,248,0.3);
   width:46px; height:46px; border-radius:50%; cursor:pointer;
   display:flex; align-items:center; justify-content:center;
   transition:border-color 0.2s ease, color 0.2s ease;
 }
-.lightbox-nav:hover{ border-color:#86C6CF; color:#86C6CF; }
+.lightbox-nav:hover{ border-color:#B7B7C0; color:#B7B7C0; }
 .lightbox-prev{ left:20px; }
 .lightbox-next{ right:20px; }
 .lightbox-nav[hidden]{ display:none; }
 .lightbox-counter{
   font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em;
-  color:rgba(244,239,223,0.5); margin-top:8px;
+  color:rgba(247,247,248,0.5); margin-top:8px;
 }
 @media (max-width:640px){
   .lightbox-nav{ width:38px; height:38px; font-size:22px; }
@@ -601,7 +638,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
 .oc-f{ fill:var(--accent-ochre); }
 .nav-links button.theme-toggle-link{
   font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.08em;
-  color:rgba(244,239,223,0.72); background:none; cursor:pointer; line-height:inherit; margin:0; appearance:none; -webkit-appearance:none; text-align:center;
+  color:rgba(247,247,248,0.72); background:none; cursor:pointer; line-height:inherit; margin:0; appearance:none; -webkit-appearance:none; text-align:center;
   transition:color 0.25s ease, border-color 0.25s ease;
 }
 .nav-links button.theme-toggle-link:hover{ color:var(--paper-warm); }
@@ -610,9 +647,9 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
 
 /* ===================== LIGHT THEME OVERRIDES (auto-merged from light version) ===================== */
   :where(html[data-theme="light"]) body{ background: var(--paper-warm); color: var(--ink); }
-  :where(html[data-theme="light"]) .site-nav{ background:rgba(244,239,223,0.9); border-bottom:1px solid var(--line-on-paper); color:var(--ink); }
-  :where(html[data-theme="light"]) .nav-mark .dot{ background:var(--ochre); box-shadow:0 0 0 3px rgba(184,132,43,0.18); }
-  :where(html[data-theme="light"]) .nav-links a{ color:rgba(23,33,28,0.65); }
+  :where(html[data-theme="light"]) .site-nav{ background:rgba(247,247,248,0.9); border-bottom:1px solid var(--line-on-paper); color:var(--ink); }
+  :where(html[data-theme="light"]) .nav-mark .dot{ background:var(--ochre); box-shadow:0 0 0 3px rgba(138,0,224,0.18); }
+  :where(html[data-theme="light"]) .nav-links a{ color:rgba(20,20,22,0.65); }
   :where(html[data-theme="light"]) .nav-links a::after{ background:var(--ochre); }
   :where(html[data-theme="light"]) .nav-links a:hover, :where(html[data-theme="light"]) .nav-links a.active{ color:var(--ink); }
   :where(html[data-theme="light"]) .nav-links .theme-toggle-link{ border:1px solid var(--line-on-paper); }
@@ -634,7 +671,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
   :where(html[data-theme="light"]) .hero-stats{ border-top:1px solid var(--line-on-paper); }
   :where(html[data-theme="light"]) .hero-stat .num{ color:var(--navy); }
   :where(html[data-theme="light"]) .hero-stat .num span{ color:var(--ochre); }
-  :where(html[data-theme="light"]) .hero-stat .label{ color:rgba(23,33,28,0.55); }
+  :where(html[data-theme="light"]) .hero-stat .label{ color:rgba(20,20,22,0.55); }
   :where(html[data-theme="light"]) .about{ color:var(--ink); }
   :where(html[data-theme="light"]) .about-title h2{ color:var(--ink); }
   :where(html[data-theme="light"]) .about-body p{ color:var(--ink-soft); }
@@ -653,7 +690,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
   :where(html[data-theme="light"]) .footer p.lede{ color:var(--ink-soft); }
   :where(html[data-theme="light"]) .footer .contact-links a{ border-bottom-color:var(--line-on-paper); }
   :where(html[data-theme="light"]) .footer .contact-links a:hover{ border-color:var(--ochre); color:var(--ochre); }
-  :where(html[data-theme="light"]) .footer .titleblock-footer{ border-top-color:var(--line-on-paper); color:rgba(23,33,28,0.42); }
+  :where(html[data-theme="light"]) .footer .titleblock-footer{ border-top-color:var(--line-on-paper); color:rgba(20,20,22,0.42); }
 
   /* light: section backgrounds (class names are theme-neutral: navy -> stone, navy-deep -> paper) */
   :where(html[data-theme="light"]) .grid-navy{ background-color:var(--paper);
@@ -662,7 +699,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
     background-image:radial-gradient(var(--line-on-paper) 1px, transparent 1px); }
   /* light: hero card 5 has no border layer / shadow */
 
-  :where(html[data-theme="light"]) .nav-links button.theme-toggle-link{ color:rgba(23,33,28,0.65); }
+  :where(html[data-theme="light"]) .nav-links button.theme-toggle-link{ color:rgba(20,20,22,0.65); }
   :where(html[data-theme="light"]) .nav-links button.theme-toggle-link:hover{ color:var(--ink); }
   :where(html[data-theme="light"]) .work-intro .eyebrow{ color:var(--ochre); }
   :where(html[data-theme="light"]) .work-intro h2{ color:var(--ink); }
@@ -692,9 +729,9 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
       <h1>服務藍圖，<br>從人的故事<span class="accent">畫</span>起。</h1>
       <p class="lede">潘昱霖，約三年的場域研究與服務設計經驗，曾任台灣設計研究院專案經理，把現場觀察與訪談整理成流程與系統規格。作品包含參與的慈濟鳳山工坊案（2026 金點設計獎）、問卷 95% 受訪者滿意的二手空間改造，以及伊甸基金會的徵件流程數位化。目前找產品規劃或專案管理方向的工作。</p>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="num"><span>3+</span></div><div class="label">YEARS · 實戰經驗</div></div>
-        <div class="hero-stat"><div class="num"><span>5</span></div><div class="label">CASES · 精選案例</div></div>
-        <div class="hero-stat"><div class="num"><span>2</span></div><div class="label">PAPERS · 國際發表</div></div>
+        <div class="hero-stat"><div class="num"><span data-count="3" data-suffix="+">3+</span></div><div class="label">YEARS · 實戰經驗</div></div>
+        <div class="hero-stat"><div class="num"><span data-count="5">5</span></div><div class="label">CASES · 精選案例</div></div>
+        <div class="hero-stat"><div class="num"><span data-count="2">2</span></div><div class="label">PAPERS · 國際發表</div></div>
       </div>
     </div>
     <div class="hv" id="heroView"></div>
@@ -707,7 +744,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
   <div class="about-grid">
     <div class="about-left reveal">
       <div class="about-title">
-        <span class="eyebrow">01 — About</span>
+        <span class="eyebrow">01 — About　關於我</span>
         <h2>研究方法，是我畫圖的鉛筆。</h2>
       </div>
       <div class="about-body">
@@ -718,14 +755,15 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
     <div class="reveal">
       <div class="legend-box">
         <div class="legend-title"><span>LEGEND</span><span>核心方法論</span></div>
-        <ul class="legend-list">
-          <li><span class="mark dot"></span>使用者訪談 User Interview</li>
-          <li><span class="mark"></span>行為觀察 Behavioral Observation</li>
-          <li><span class="mark tri"></span>A/B Testing</li>
-          <li><span class="mark dot"></span>服務藍圖 Service Blueprint</li>
-          <li><span class="mark"></span>顧客旅程地圖 Customer Journey Map</li>
-          <li><span class="mark tri"></span>前後數據追蹤 Before/After Tracking</li>
+        <ul class="legend-list" id="legendList">
+          <li><button type="button" class="lg-btn" data-m="interview" aria-pressed="false"><span class="mark dot"></span>使用者訪談 User Interview</button></li>
+          <li><button type="button" class="lg-btn" data-m="observe" aria-pressed="false"><span class="mark"></span>行為觀察 Behavioral Observation</button></li>
+          <li><button type="button" class="lg-btn" data-m="blueprint" aria-pressed="false"><span class="mark dot"></span>服務藍圖 Service Blueprint</button></li>
+          <li><button type="button" class="lg-btn" data-m="journey" aria-pressed="false"><span class="mark"></span>顧客旅程地圖 Customer Journey Map</button></li>
+          <li><button type="button" class="lg-btn" data-m="flow" aria-pressed="false"><span class="mark"></span>流程圖與規格定義 Flow &amp; Spec</button></li>
+          <li><button type="button" class="lg-btn" data-m="tracking" aria-pressed="false"><span class="mark tri"></span>前後數據追蹤 Before/After Tracking</button></li>
         </ul>
+        <div class="lg-result" id="lgResult" aria-live="polite"></div>
       </div>
       <div class="credentials">
         <div class="row"><span>IASDR 2025 — Reframing Waste: A Systemic Design Approach to Urban Resource Upcycling and Social Value Creation</span><span class="tag">PAPER</span></div>
@@ -739,8 +777,8 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
 
 <!-- ===================== WORK ===================== -->
 <section id="work" class="grid-navy">
-  <div class="work-intro section-head reveal" style="margin-top:8px;">
-    <span class="eyebrow">02 — Selected Work</span>
+  <div class="work-intro section-head reveal">
+    <span class="eyebrow">02 — Selected Work　精選專案</span>
     <h2>五份現場圖紙，五個還在運作的系統。</h2>
   </div>
 
@@ -752,7 +790,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
 <!-- ===================== FOOTER / CONTACT ===================== -->
 <footer id="contact" class="footer grid-navy">
   <div class="footer-inner reveal">
-    <span class="eyebrow">03 — Contact</span>
+    <span class="eyebrow">03 — Contact　聯絡</span>
     <h2>想聊聊<br>下一個案子嗎？</h2>
     <p class="lede">目前正在尋找 UX 研究員 或 產品經理/專案經理 的下一個機會，歡迎透過以下方式與我聯繫，或先看看完整的履歷與更多案例。</p>
     <div class="contact-links">
@@ -761,6 +799,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
       <a href="https://uling.super.site/" target="_blank" rel="noopener">↗ 完整作品集（Notion）</a>
     </div>
   </div>
+  <div class="foot-mark" aria-hidden="true"><img src="images/beetle.png" alt=""></div>
   <div class="titleblock-footer">
     <span>YULING PAN — PORTFOLIO</span>
     <span>SHEET 01 OF 01</span>
@@ -786,19 +825,19 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
           </g>
           <g stroke="currentColor" stroke-width="1" opacity="0.3"><line x1="30" y1="150" x2="450" y2="150"/></g>
           <rect x="70" y="90" width="46" height="60" fill="none" stroke="currentColor" stroke-width="1.4"/>
-          <text x="93" y="80" text-anchor="middle" font-family="IBM Plex Mono" font-size="15">900</text>
+          <text x="93" y="80" text-anchor="middle" font-family="IBM Plex Mono" font-size="15" data-count="900">900</text>
           <text x="93" y="168" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" opacity="0.65">改造前</text>
           <rect x="150" y="50" width="46" height="100" fill="currentColor" opacity="0.9"/>
-          <text x="173" y="40" text-anchor="middle" font-family="IBM Plex Mono" font-size="15" font-weight="700">1,350</text>
+          <text x="173" y="40" text-anchor="middle" font-family="IBM Plex Mono" font-size="15" font-weight="700" data-count="1350" data-comma="1">1,350</text>
           <text x="173" y="168" text-anchor="middle" font-family="IBM Plex Mono" font-size="11.5" opacity="0.65">改造後</text>
           <g stroke="currentColor" stroke-width="1.3" fill="none" marker-end="url(#a1)">
             <path d="M120,80 C135,60 140,60 148,52" opacity="0.6"/>
           </g>
           <circle cx="345" cy="100" r="52" fill="none" stroke="currentColor" stroke-width="8" opacity="0.15"/>
-          <circle cx="345" cy="100" r="52" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="311 327" stroke-linecap="round" transform="rotate(-90 345 100)"/>
-          <text x="345" y="94" text-anchor="middle" font-family="Space Grotesk" font-size="24" font-weight="700">95%</text>
+          <circle cx="345" cy="100" r="52" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="311 327" stroke-linecap="round" transform="rotate(-90 345 100)" data-ring="311 327"/>
+          <text x="345" y="94" text-anchor="middle" font-family="Space Grotesk" font-size="24" font-weight="700" data-count="95" data-suffix="%">95%</text>
           <text x="345" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" opacity="0.65">滿意度</text>
-          <text x="345" y="178" text-anchor="middle" font-family="IBM Plex Mono" font-size="12">新客佔比 <tspan font-weight="700">62%</tspan></text>
+          <text x="345" y="178" text-anchor="middle" font-family="IBM Plex Mono" font-size="12">新客佔比 <tspan font-weight="700" data-count="62" data-suffix="%">62%</tspan></text>
         </svg>
 </template>
 <template id="vis-tzuchi">
@@ -873,16 +912,16 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
           </g>
 
           <!-- Emphasis: design regeneration & member reward loop -->
-          <path d="M362,120 C420,150 440,95 495,62" fill="none" class="oc-s" stroke="#D6A03F" stroke-width="1.3" stroke-dasharray="1 5" opacity="0.9"/>
-          <rect x="385" y="150" width="168" height="24" fill="none" class="oc-s" stroke="#D6A03F" stroke-width="1" opacity="0.85"/>
-          <text x="469" y="166" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" class="oc-f" fill="#D6A03F" font-weight="500">報廢產品再製轉化會員贈品</text>
-          <g transform="translate(497,55) rotate(45)" fill="none" class="oc-s" stroke="#D6A03F" stroke-width="1.4">
+          <path d="M362,120 C420,150 440,95 495,62" fill="none" class="oc-s" stroke="#B84DFF" stroke-width="1.3" stroke-dasharray="1 5" opacity="0.9"/>
+          <rect x="385" y="150" width="168" height="24" fill="none" class="oc-s" stroke="#B84DFF" stroke-width="1" opacity="0.85"/>
+          <text x="469" y="166" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" class="oc-f" fill="#B84DFF" font-weight="500">報廢產品再製轉化會員贈品</text>
+          <g transform="translate(497,55) rotate(45)" fill="none" class="oc-s" stroke="#B84DFF" stroke-width="1.4">
             <rect x="-8" y="-8" width="16" height="16"/>
           </g>
-          <text x="520" y="52" font-family="IBM Plex Mono" font-size="13" font-weight="700" class="oc-f" fill="#D6A03F">設計再生與</text>
-          <text x="520" y="67" font-family="IBM Plex Mono" font-size="13" font-weight="700" class="oc-f" fill="#D6A03F">會員回饋機制</text>
-          <text x="520" y="84" font-family="IBM Plex Mono" font-size="10.5" class="oc-f" fill="#D6A03F" opacity="0.75">廢棄機身以設計</text>
-          <text x="520" y="98" font-family="IBM Plex Mono" font-size="10.5" class="oc-f" fill="#D6A03F" opacity="0.75">轉譯再利用</text>
+          <text x="520" y="52" font-family="IBM Plex Mono" font-size="13" font-weight="700" class="oc-f" fill="#B84DFF">設計再生與</text>
+          <text x="520" y="67" font-family="IBM Plex Mono" font-size="13" font-weight="700" class="oc-f" fill="#B84DFF">會員回饋機制</text>
+          <text x="520" y="84" font-family="IBM Plex Mono" font-size="10.5" class="oc-f" fill="#B84DFF" opacity="0.75">廢棄機身以設計</text>
+          <text x="520" y="98" font-family="IBM Plex Mono" font-size="10.5" class="oc-f" fill="#B84DFF" opacity="0.75">轉譯再利用</text>
 
           <line x1="30" y1="141" x2="380" y2="141" stroke="currentColor" stroke-width="1" opacity="0.2"/>
           <text x="215" y="158" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" opacity="0.5">循環經濟商業模式 · RESTYLE 2050</text>
@@ -904,6 +943,7 @@ html[data-theme="light"]{ --accent-ochre: var(--ochre); }
    DATA — 案例內容都在這裡，改文字只需要改這一區
    ---------------------------------------------------------------------
    desc 內 **文字** = 金色強調；title / cardName / facts 內 \n = 換行
+   methods = 此案例用到的方法（對應 About 圖例：interview / observe / ab / blueprint / journey / tracking）
    galleries 的 thumb 省略時，自動使用「檔名-thumb.副檔名」
    圖解 SVG 與影片放在頁尾的 <template id="vis-案例id"> 區塊
    heroImg / heroPos = 首頁右側取景框的照片與裁切焦點（x% y%）；heroBadge = 取景框左上角的獎項標示（可省略）；
@@ -915,6 +955,7 @@ const CASES = [
     id: "eden",
     heroMock: ["images/eden-collection-flow.png", "images/eden-ragic-flow.png"],
     code: "NO. EDEN—01 · 2026",
+    methods: ["interview","journey","flow"],
     cardCode: "NO. EDEN—01",
     cardName: "伊甸基金會\n計畫徵件系統",
     title: "伊甸基金會\n計畫徵件系統",
@@ -939,6 +980,7 @@ const CASES = [
     id: "dashuigou",
     heroImg: "images/wanhua-after-3.jpg", heroPos: "50% 42%",
     code: "NO. DASHUIGOU—02 · 2024",
+    methods: ["interview","observe","journey","tracking"],
     cardCode: "NO. DASHUIGOU—02",
     cardName: "大水溝\n二手屋場域改造",
     title: "大水溝二手屋\n場域改造",
@@ -975,6 +1017,7 @@ const CASES = [
     id: "tzuchi",
     heroImg: "images/hero-tzuchi.jpg", heroPos: "50% 55%", heroBadge: "🏆 2026 金點設計獎",
     code: "NO. TZUCHI—03 · 2024–2026",
+    methods: ["interview","observe","journey","tracking"],
     cardCode: "NO. TZUCHI—03",
     cardName: "慈濟基金會\n雙據點惜福屋",
     badge: {"type": "award", "text": "🏆 2026 金點設計獎"},
@@ -1010,6 +1053,7 @@ const CASES = [
     id: "zerozero",
     heroImg: "images/hero-zerozero.jpg", heroPos: "50% 50%",
     code: "NO. ZEROZERO—04 · 2025–2026",
+    methods: ["interview","observe","journey"],
     cardCode: "NO. ZEROZERO—04",
     cardName: "大豐環保科技\nzero zero 商城",
     badge: {"type": "live", "text": "LIVE · 上線營運中"},
@@ -1027,6 +1071,7 @@ const CASES = [
     id: "lightitup",
     heroImg: "images/lightup-2.jpg", heroPos: "58% 50%",
     code: "NO. LIGHTUP—05 · 2024",
+    methods: ["interview","blueprint"],
     cardCode: "NO. LIGHTUP—05",
     cardName: "光的再造\nLIGHT IT UP",
     title: "光的再造\nLIGHT IT UP",
@@ -1174,6 +1219,7 @@ themeBtn.addEventListener('click', () => {
 syncThemeBtn();
 </script>
 
+<div class="orb" aria-hidden="true"><svg id="orbDots" viewBox="0 0 460 460"><defs><path id="orbPath" d="M230,25 A205,205 0 1 0 230,435 A205,205 0 1 0 230,25"/></defs><text id="orbText" fill="rgba(255,255,255,.92)"><textPath id="orbTP" href="#orbPath" startOffset="0"></textPath></text></svg></div>
 <script>
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
@@ -1264,6 +1310,88 @@ lightbox.addEventListener('wheel', (e) => {
 }, { passive: false });
 
 
+
+// orb: ring text follows the current section, rotates with scroll, fades as the page moves on
+(function(){
+  var orb=document.querySelector('.orb'), ring=document.getElementById('orbDots'), tp=document.getElementById('orbTP');
+  if(!orb||!ring||!tp) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, tick=false, cur='', L=2*Math.PI*205;
+  var secs=[['.hero','SERVICE DESIGN / PROJECT MANAGEMENT','SERVICE DESIGN'],['#about','01 — ABOUT　關於我','01 — ABOUT'],['#work','02 — SELECTED WORK　精選專案','02 — WORK']]
+    .map(function(a){ return [document.querySelector(a[0]),a[1],a[2]]; }).filter(function(a){ return a[0]; });
+  document.querySelectorAll('#work .sheet').forEach(function(sh){
+    var c=sh.querySelector('.sheet-code'); if(!c) return;
+    var t=c.textContent.trim(); secs.push([sh,t,t.split('·')[0].trim()]);
+  });
+  var ct=document.querySelector('#contact'); if(ct) secs.push([ct,'03 — CONTACT　聯絡','03 — CONTACT']);
+  function setLabel(t){
+    if(t===cur) return; cur=t;
+    tp.textContent=t;
+    var w=tp.getComputedTextLength()||300;
+    tp.setAttribute('startOffset',(L*(window.innerWidth<=760?162:157)/360-w/2).toFixed(1));
+  }
+  function upd(){
+    tick=false; var y=window.scrollY||0, mid=window.innerHeight*0.4, lab=secs[0], base=secs[0][0];
+    secs.forEach(function(a){ if(a[0].getBoundingClientRect().top<=mid){ lab=a; base=a[0]; } });
+    setLabel(window.innerWidth<=760?lab[2]:lab[1]);
+    if(!reduce) ring.style.transform='rotate('+(-base.getBoundingClientRect().top*0.1).toFixed(2)+'deg)';
+    orb.style.setProperty('--o',Math.max(0.5,1-y/700).toFixed(3));
+  }
+  window.addEventListener('resize',function(){ cur=''; upd(); });
+  window.addEventListener('scroll',function(){ if(!tick){ tick=true; requestAnimationFrame(upd); } },{passive:true});
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){ cur=''; upd(); });
+  upd();
+})();
+
+// count-up numbers + donut ring when scrolled into view
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('[data-count]'), rings=document.querySelectorAll('[data-ring]');
+  if(reduce||!('IntersectionObserver' in window)) return;
+  function fmt(el,v){ var t=Math.round(v); return (el.dataset.comma?t.toLocaleString('en-US'):String(t))+(el.dataset.suffix||''); }
+  function run(el){
+    var to=+el.dataset.count, t0=null, dur=1100;
+    (function step(ts){ if(t0===null) t0=ts; var p=Math.min(1,(ts-t0)/dur), e=1-Math.pow(1-p,3);
+      el.textContent=fmt(el,to*e); if(p<1) requestAnimationFrame(step); })(performance.now());
+  }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ io.unobserve(e.target); run(e.target); } }); },{threshold:.6});
+  els.forEach(function(el){ el.textContent=fmt(el,0); io.observe(el); });
+  rings.forEach(function(r){ var full=r.dataset.ring; r.style.strokeDasharray='0 327'; r.style.transition='stroke-dasharray 1.4s cubic-bezier(.2,.7,.2,1)';
+    var io2=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ io2.disconnect(); r.style.strokeDasharray=full; } },{threshold:.6}); io2.observe(r); });
+})();
+
+// legend: click a method to highlight the cases that used it
+(function(){
+  var list=document.getElementById('legendList'), out=document.getElementById('lgResult');
+  if(!list||!out||typeof CASES==='undefined') return;
+  var NAMES={interview:'使用者訪談',observe:'行為觀察',blueprint:'服務藍圖',journey:'顧客旅程地圖',flow:'流程圖與規格定義',tracking:'前後數據追蹤'};
+  var active=null;
+  list.querySelectorAll('.lg-btn').forEach(function(b){ var n=b.querySelector('.lg-nums'); if(!n) return;
+    n.textContent=CASES.map(function(c,i){ return (c.methods||[]).indexOf(b.dataset.m)>-1?('0'+(i+1)).slice(-2):null; }).filter(Boolean).join(' '); });
+  function nameOf(c){ return String(c.cardName||c.id).replace(/\n/g,' '); }
+  function clear(){
+    active=null; document.body.classList.remove('m-filter');
+    document.querySelectorAll('.sheet').forEach(function(s){ s.classList.remove('m-hit'); });
+    document.querySelectorAll('.method-flag').forEach(function(f){ f.remove(); });
+    list.querySelectorAll('.lg-btn').forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+    out.innerHTML='<span class="lg-hint">點選方法，看哪些案例用到</span>';
+  }
+  function pick(m){
+    if(active===m){ clear(); return; }
+    clear(); active=m;
+    var hits=CASES.filter(function(c){ return (c.methods||[]).indexOf(m)>-1; });
+    list.querySelector('[data-m="'+m+'"]').setAttribute('aria-pressed','true');
+    if(!hits.length){ out.innerHTML='<span class="lg-hint">目前沒有標記使用此方法的案例</span>'; return; }
+    document.body.classList.add('m-filter');
+    hits.forEach(function(c){
+      var sh=document.getElementById('case-'+c.id); if(!sh) return; sh.classList.add('m-hit');
+      var code=sh.querySelector('.sheet-code'); if(code){ var f=document.createElement('span'); f.className='method-flag'; f.textContent='◆ '+NAMES[m]; code.insertAdjacentElement('afterend',f); }
+    });
+    out.innerHTML='用於：'+hits.map(function(c){ return '<a href="#case-'+c.id+'">'+nameOf(c)+'</a>'; }).join('');
+  }
+  list.addEventListener('click',function(e){ var b=e.target.closest('.lg-btn'); if(b) pick(b.dataset.m); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&active) clear(); });
+  clear();
+})();
 </script>
 </body>
 </html>
